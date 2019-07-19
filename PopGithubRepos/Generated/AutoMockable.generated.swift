@@ -254,6 +254,27 @@ class GithubsListInteractorInputMock: GithubsListInteractorInput {
     }
 
 }
+class GithubsListInteractorModuleFactoryProtocolMock: GithubsListInteractorModuleFactoryProtocol {
+
+    //MARK: - interactor
+
+    var interactorGetGithubsListRepositoryCallsCount = 0
+    var interactorGetGithubsListRepositoryCalled: Bool {
+        return interactorGetGithubsListRepositoryCallsCount > 0
+    }
+    var interactorGetGithubsListRepositoryReceivedGetGithubsListRepository: GetGithubsListRepositoryProtocol?
+    var interactorGetGithubsListRepositoryReceivedInvocations: [GetGithubsListRepositoryProtocol] = []
+    var interactorGetGithubsListRepositoryReturnValue: GithubsListInteractorInput!
+    var interactorGetGithubsListRepositoryClosure: ((GetGithubsListRepositoryProtocol) -> GithubsListInteractorInput)?
+
+    func interactor(getGithubsListRepository: GetGithubsListRepositoryProtocol) -> GithubsListInteractorInput {
+        interactorGetGithubsListRepositoryCallsCount += 1
+        interactorGetGithubsListRepositoryReceivedGetGithubsListRepository = getGithubsListRepository
+        interactorGetGithubsListRepositoryReceivedInvocations.append(getGithubsListRepository)
+        return interactorGetGithubsListRepositoryClosure.map({ $0(getGithubsListRepository) }) ?? interactorGetGithubsListRepositoryReturnValue
+    }
+
+}
 class GithubsListInteractorOutputMock: GithubsListInteractorOutput {
 
     //MARK: - setDefaultsValues

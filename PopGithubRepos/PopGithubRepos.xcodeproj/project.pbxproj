@@ -10,6 +10,9 @@
 		15773183045ADFB82ADE643C /* Pods_PopGithubReposBusinessLogicTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E9C24A26316C7727334DEB5 /* Pods_PopGithubReposBusinessLogicTests.framework */; };
 		34CCA7472632D32E6DD086C3 /* Pods_PopGithubReposBusinessLogic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40164BA78398C98FBBB5DB7E /* Pods_PopGithubReposBusinessLogic.framework */; };
 		75DF9BEA491A92B0A85B43A9 /* Pods_PopGithubReposTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C5A4BBE576FCFA975316BE /* Pods_PopGithubReposTests.framework */; };
+		781FEF8122E26873001DF06B /* GithubsListModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FEF8022E26873001DF06B /* GithubsListModuleFactory.swift */; };
+		781FEF8322E26942001DF06B /* GetGithubsListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FEF8222E26942001DF06B /* GetGithubsListRepository.swift */; };
+		781FEF8522E26C84001DF06B /* GithubsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FEF8422E26C84001DF06B /* GithubsListTableViewCell.swift */; };
 		78A5566022E248DB00547400 /* GithubsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A5565F22E248DB00547400 /* GithubsListPresenter.swift */; };
 		78A5566222E248E400547400 /* GithubsListPresenterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A5566122E248E400547400 /* GithubsListPresenterInput.swift */; };
 		78A5566422E248EE00547400 /* GithubsListPresenterOuput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A5566322E248EE00547400 /* GithubsListPresenterOuput.swift */; };
@@ -92,6 +95,9 @@
 		68C5A4BBE576FCFA975316BE /* Pods_PopGithubReposTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopGithubReposTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70F6FFC023CC778C3B8BECA5 /* Pods-PopGithubReposTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopGithubReposTests.release.xcconfig"; path = "Target Support Files/Pods-PopGithubReposTests/Pods-PopGithubReposTests.release.xcconfig"; sourceTree = "<group>"; };
 		72E07148B8AF0F9BBE6873A1 /* Pods-PopGithubRepos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopGithubRepos.debug.xcconfig"; path = "Target Support Files/Pods-PopGithubRepos/Pods-PopGithubRepos.debug.xcconfig"; sourceTree = "<group>"; };
+		781FEF8022E26873001DF06B /* GithubsListModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubsListModuleFactory.swift; sourceTree = "<group>"; };
+		781FEF8222E26942001DF06B /* GetGithubsListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGithubsListRepository.swift; sourceTree = "<group>"; };
+		781FEF8422E26C84001DF06B /* GithubsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubsListTableViewCell.swift; sourceTree = "<group>"; };
 		78A5565F22E248DB00547400 /* GithubsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubsListPresenter.swift; sourceTree = "<group>"; };
 		78A5566122E248E400547400 /* GithubsListPresenterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubsListPresenterInput.swift; sourceTree = "<group>"; };
 		78A5566322E248EE00547400 /* GithubsListPresenterOuput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubsListPresenterOuput.swift; sourceTree = "<group>"; };
@@ -193,6 +199,7 @@
 			children = (
 				78BA7BC522E2557A009D3876 /* GithubsListStoryboard.storyboard */,
 				78BA7BC722E25595009D3876 /* GithubsListViewController.swift */,
+				781FEF8422E26C84001DF06B /* GithubsListTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -304,6 +311,7 @@
 				78A5565E22E248C800547400 /* Router */,
 				78A5565D22E248C300547400 /* View */,
 				78A5565C22E248BD00547400 /* Presenter */,
+				781FEF8022E26873001DF06B /* GithubsListModuleFactory.swift */,
 			);
 			path = GithubsList;
 			sourceTree = "<group>";
@@ -311,6 +319,7 @@
 		78FA522C22E23CB200FE96D3 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				781FEF8222E26942001DF06B /* GetGithubsListRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -719,8 +728,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				78A5566222E248E400547400 /* GithubsListPresenterInput.swift in Sources */,
+				781FEF8322E26942001DF06B /* GetGithubsListRepository.swift in Sources */,
 				78A5566422E248EE00547400 /* GithubsListPresenterOuput.swift in Sources */,
 				78BA7BC322E25552009D3876 /* Storyboard Scenes.swift in Sources */,
+				781FEF8122E26873001DF06B /* GithubsListModuleFactory.swift in Sources */,
+				781FEF8522E26C84001DF06B /* GithubsListTableViewCell.swift in Sources */,
 				78BA7BC822E25595009D3876 /* GithubsListViewController.swift in Sources */,
 				78BA7BC422E25552009D3876 /* Storyboard Segues.swift in Sources */,
 				78A5566022E248DB00547400 /* GithubsListPresenter.swift in Sources */,

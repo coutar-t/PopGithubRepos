@@ -15,7 +15,6 @@ class GithubsListInteractor {
 
     init(getGithubsListRepository: GetGithubsListRepositoryProtocol) {
         self.getGithubsListRepository = getGithubsListRepository
-        getGithubsListRepository.output = self
     }
 }
 

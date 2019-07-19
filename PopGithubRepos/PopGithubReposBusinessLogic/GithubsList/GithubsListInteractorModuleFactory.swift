@@ -7,3 +7,17 @@
 //
 
 import Foundation
+
+// sourcery: AutoMockable
+public protocol GithubsListInteractorModuleFactoryProtocol {
+    func interactor(getGithubsListRepository: GetGithubsListRepositoryProtocol) -> GithubsListInteractorInput
+}
+
+public class GithubsListInteractorModuleFactory: GithubsListInteractorModuleFactoryProtocol {
+    public init() {}
+    public func interactor(getGithubsListRepository: GetGithubsListRepositoryProtocol) -> GithubsListInteractorInput {
+        let interactor = GithubsListInteractor(getGithubsListRepository: getGithubsListRepository)
+        getGithubsListRepository.output = interactor
+        return interactor
+    }
+}
