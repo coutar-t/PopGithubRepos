@@ -1,0 +1,8 @@
+ib:
+  inputs: ./PopGithubRepos
+  outputs:
+    - templateName: scenes-swift4
+      output: ./PopGithubRepos/Generated/Storyboard Scenes.swift
+    - templateName: segues-swift4
+      output: ./PopGithubRepos/Generated/Storyboard Segues.swift
+

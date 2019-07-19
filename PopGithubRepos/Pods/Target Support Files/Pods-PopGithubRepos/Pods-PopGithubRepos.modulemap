@@ -1,0 +1,6 @@
+framework module Pods_PopGithubRepos {
+  umbrella header "Pods-PopGithubRepos-umbrella.h"
+
+  export *
+  module * { export * }
+}
