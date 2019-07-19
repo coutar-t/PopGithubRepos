@@ -13,6 +13,7 @@
 		781FEF8122E26873001DF06B /* GithubsListModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FEF8022E26873001DF06B /* GithubsListModuleFactory.swift */; };
 		781FEF8322E26942001DF06B /* GetGithubsListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FEF8222E26942001DF06B /* GetGithubsListRepository.swift */; };
 		781FEF8522E26C84001DF06B /* GithubsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FEF8422E26C84001DF06B /* GithubsListTableViewCell.swift */; };
+		781FEF8822E26F58001DF06B /* GithubAPIWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FEF8722E26F58001DF06B /* GithubAPIWrapper.swift */; };
 		78A5566022E248DB00547400 /* GithubsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A5565F22E248DB00547400 /* GithubsListPresenter.swift */; };
 		78A5566222E248E400547400 /* GithubsListPresenterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A5566122E248E400547400 /* GithubsListPresenterInput.swift */; };
 		78A5566422E248EE00547400 /* GithubsListPresenterOuput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A5566322E248EE00547400 /* GithubsListPresenterOuput.swift */; };
@@ -98,6 +99,7 @@
 		781FEF8022E26873001DF06B /* GithubsListModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubsListModuleFactory.swift; sourceTree = "<group>"; };
 		781FEF8222E26942001DF06B /* GetGithubsListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGithubsListRepository.swift; sourceTree = "<group>"; };
 		781FEF8422E26C84001DF06B /* GithubsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubsListTableViewCell.swift; sourceTree = "<group>"; };
+		781FEF8722E26F58001DF06B /* GithubAPIWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPIWrapper.swift; sourceTree = "<group>"; };
 		78A5565F22E248DB00547400 /* GithubsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubsListPresenter.swift; sourceTree = "<group>"; };
 		78A5566122E248E400547400 /* GithubsListPresenterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubsListPresenterInput.swift; sourceTree = "<group>"; };
 		78A5566322E248EE00547400 /* GithubsListPresenterOuput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubsListPresenterOuput.swift; sourceTree = "<group>"; };
@@ -184,6 +186,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		781FEF8622E26F44001DF06B /* APIWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				781FEF8722E26F58001DF06B /* GithubAPIWrapper.swift */,
+			);
+			path = APIWrapper;
+			sourceTree = "<group>";
+		};
 		78A5565C22E248BD00547400 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +273,7 @@
 		78FA51E722E23C3F00FE96D3 /* PopGithubRepos */ = {
 			isa = PBXGroup;
 			children = (
+				781FEF8622E26F44001DF06B /* APIWrapper */,
 				78BA7BC022E25552009D3876 /* Generated */,
 				78FA522C22E23CB200FE96D3 /* Repositories */,
 				78FA522B22E23C9900FE96D3 /* GithubsList */,
@@ -730,6 +741,7 @@
 				78A5566222E248E400547400 /* GithubsListPresenterInput.swift in Sources */,
 				781FEF8322E26942001DF06B /* GetGithubsListRepository.swift in Sources */,
 				78A5566422E248EE00547400 /* GithubsListPresenterOuput.swift in Sources */,
+				781FEF8822E26F58001DF06B /* GithubAPIWrapper.swift in Sources */,
 				78BA7BC322E25552009D3876 /* Storyboard Scenes.swift in Sources */,
 				781FEF8122E26873001DF06B /* GithubsListModuleFactory.swift in Sources */,
 				781FEF8522E26C84001DF06B /* GithubsListTableViewCell.swift in Sources */,

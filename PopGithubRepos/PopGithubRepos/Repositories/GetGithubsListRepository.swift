@@ -13,9 +13,17 @@ class GetGithubsListRepository: GetGithubsListRepositoryProtocol {
     var output: GetGithubsListRepositoryOutput?
 
     func getiOSRepositories() {
-        output?.didGet(githubs: [GetGithubsListRepositoryResponse(name: "Repo1", author: "Author", license: "OpenSource", contributorsCount: 2, starsCount: 3),
-            GetGithubsListRepositoryResponse(name: "Repo2", author: "Author", license: "OpenSource", contributorsCount: 2, starsCount: 3),
-            GetGithubsListRepositoryResponse(name: "Repo3", author: "Author", license: "OpenSource", contributorsCount: 2, starsCount: 3),GetGithubsListRepositoryResponse(name: "Repo4", author: "Author", license: "OpenSource", contributorsCount: 2, starsCount: 3)])
+        GithubAPIWrapper.shared.getiOSRepositories(success: { [weak self] (repositoriesList) in
+            self?.output?.didGet(githubs: repositoriesList.items?.compactMap({
+                guard let name = $0.name,
+                    let author = $0.owner?.login,
+    let license = $0.license?.name,
+                    let stars = $0.stargazers_count else { return nil }
+                return GetGithubsListRepositoryResponse(name: name, author: author, license: name, contributorsCount: 0, starsCount: stars)
+            }) ?? [])
+        }) { (error) in
+            print(error)
+        }
     }
 }
 
