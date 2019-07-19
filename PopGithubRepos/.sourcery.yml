@@ -1,0 +1,7 @@
+sources:
+  - ./PopGithubReposBusinessLogic
+  - ./PopGithubRepos
+templates:
+  - ./SourceryTemplates
+output:
+  ./Generated
