@@ -46,7 +46,7 @@ extension GithubsListInteractor: GithubsListInteractorInput {
 }
 
 extension GithubsListInteractor: GetGithubsListRepositoryOutput {
-    func didGet(githubs: [GetGithubsListRepositoryResponse]) {
+    func didGet(githubs: [GetGithubsListRepositoryResponseProtocol]) {
         repositories = githubs.map({ GithubItem(name: $0.name,
                                                 author: $0.author,
                                                 license: $0.license,

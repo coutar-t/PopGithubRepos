@@ -14,4 +14,5 @@ public protocol GithubsListPresenterOutput: class {
     func showLoading()
     func hideLoading()
     func updateGithubs()
+    func showError(with message: String, retryMessage: String)
 }

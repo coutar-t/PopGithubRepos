@@ -39,6 +39,15 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "78FA51F822E23C4300FE96D3"
+            BuildableName = "PopGithubReposTests.xctest"
+            BlueprintName = "PopGithubReposTests"
+            ReferencedContainer = "container:PopGithubRepos.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -70,15 +79,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "78FA51F822E23C4300FE96D3"
-            BuildableName = "PopGithubReposTests.xctest"
-            BlueprintName = "PopGithubReposTests"
-            ReferencedContainer = "container:PopGithubRepos.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

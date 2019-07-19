@@ -118,5 +118,14 @@ class {{ type.name }}Mock: {{ type.name }} {
 {% for method in type.allMethods|!definedInExtension %}
     {% call mockMethod method %}
 {% endfor %}
+{% if type.name|contains:"ItemProtocol" or type.name|contains:"ViewModelProtocol" or type.name|contains:"ResponseProtocol" or type.name|contains:"RequestProtocol" %}
+    init() {}
+
+    init({% for variable in type.variables %}{{ variable.name }}: {{ variable.typeName }}{% if not forloop.last %}, {% endif %}{% endfor %}) {
+      {% for variable in type.variables %}
+      self.{{ variable.name }} = {{ variable.name }}
+      {% endfor %}
+    }
+{% endif %}
 }
 {% endif %}{% endfor %}

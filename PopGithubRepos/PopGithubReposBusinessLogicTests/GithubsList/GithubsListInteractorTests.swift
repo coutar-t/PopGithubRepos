@@ -40,7 +40,7 @@ class GithubsListInteractorTests: XCTestCase {
     func test_givenRepositories_whenNumberOfCategories_thenReturnOne() {
         // Given
 
-        interactor.didGet(githubs: [GetGithubsListRepositoryResponseMock(name: "Repo1",
+        interactor.didGet(githubs: [GetGithubsListRepositoryResponseProtocolMock(name: "Repo1",
                                                                          author: "Author",
                                                                          license: "License",
                                                                          contributorsCount: 2,
@@ -70,7 +70,7 @@ class GithubsListInteractorTests: XCTestCase {
     func test_givenRepositories_whenNumberOfItemsAtGoodIndex_thenReturnRepositoriesCount() {
         // Given
 
-        interactor.didGet(githubs: [GetGithubsListRepositoryResponseMock(name: "Repo1",
+        interactor.didGet(githubs: [GetGithubsListRepositoryResponseProtocolMock(name: "Repo1",
                                                                          author: "Author",
                                                                          license: "License",
                                                                          contributorsCount: 2,
@@ -88,7 +88,7 @@ class GithubsListInteractorTests: XCTestCase {
     func test_givenRepositories_whenNumberOfItemsAtWrongIndex_thenReturnRepositoriesCount() {
         // Given
 
-        interactor.didGet(githubs: [GetGithubsListRepositoryResponseMock(name: "Repo1",
+        interactor.didGet(githubs: [GetGithubsListRepositoryResponseProtocolMock(name: "Repo1",
                                                                          author: "Author",
                                                                          license: "License",
                                                                          contributorsCount: 2,
@@ -108,7 +108,7 @@ class GithubsListInteractorTests: XCTestCase {
     func test_givenRepositories_whenGithubForGoodIndex_thenReturnGithub() {
         // Given
 
-        interactor.didGet(githubs: [GetGithubsListRepositoryResponseMock(name: "Repo1",
+        interactor.didGet(githubs: [GetGithubsListRepositoryResponseProtocolMock(name: "Repo1",
                                                                          author: "Author",
                                                                          license: "License",
                                                                          contributorsCount: 2,
@@ -130,7 +130,7 @@ class GithubsListInteractorTests: XCTestCase {
     func test_whenDidGet_thenOutputUpdateGithubsList() {
         // When
 
-        interactor.didGet(githubs: [GetGithubsListRepositoryResponseMock(name: "Repo1",
+        interactor.didGet(githubs: [GetGithubsListRepositoryResponseProtocolMock(name: "Repo1",
                                                                          author: "Author",
                                                                          license: "License",
                                                                          contributorsCount: 2,
@@ -143,58 +143,5 @@ class GithubsListInteractorTests: XCTestCase {
         XCTAssertFalse(outputMock.setDefaultsValuesCalled)
         XCTAssertFalse(outputMock.notifyNetworkErrorCalled)
         XCTAssertFalse(outputMock.notifyUnknownErrorCalled)
-    }
-}
-
-private struct GetGithubsListRepositoryResponseMock: GetGithubsListRepositoryResponse {
-    var name: String
-    var author: String
-    var license: String
-    var contributorsCount: Int
-    var starsCount: Int
-}
-
-private class GetGithubsListRepositoryProtocolMock: GetGithubsListRepositoryProtocol {
-    var output: GetGithubsListRepositoryOutput?
-    var getiOSRepositoriesCallsCount = 0
-    var getiOSRepositoriesCalled: Bool { return getiOSRepositoriesCallsCount > 0 }
-
-    func getiOSRepositories() {
-        getiOSRepositoriesCallsCount += 1
-    }
-}
-
-private class GithubsListInteractorOutputMock: GithubsListInteractorOutput {
-    var setDefaultsValuesCallsCount = 0
-    var updateGithubsListCallsCount = 0
-    var notifyServerErrorCallsCount = 0
-    var notifyNetworkErrorCallsCount = 0
-    var notifyUnknownErrorCallsCount = 0
-
-    var setDefaultsValuesCalled: Bool { return setDefaultsValuesCallsCount > 0 }
-    var updateGithubsListCalled: Bool { return updateGithubsListCallsCount > 0 }
-    var notifyServerErrorCalled: Bool { return notifyServerErrorCallsCount > 0 }
-    var notifyNetworkErrorCalled: Bool { return notifyNetworkErrorCallsCount > 0 }
-    var notifyUnknownErrorCalled: Bool { return notifyUnknownErrorCallsCount > 0 }
-
-
-    func setDefaultsValues() {
-        setDefaultsValuesCallsCount += 1
-    }
-
-    func updateGithubsList() {
-        updateGithubsListCallsCount += 1
-    }
-
-    func notifyServerError() {
-        notifyServerErrorCallsCount += 1
-    }
-
-    func notifyNetworkError() {
-        notifyNetworkErrorCallsCount += 1
-    }
-
-    func notifyUnknownError() {
-        notifyUnknownErrorCallsCount += 1
     }
 }

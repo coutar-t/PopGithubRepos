@@ -26,6 +26,93 @@ import AppKit
 
 
 
+class GetGithubsListRepositoryOutputMock: GetGithubsListRepositoryOutput {
+
+    //MARK: - didGet
+
+    var didGetGithubsCallsCount = 0
+    var didGetGithubsCalled: Bool {
+        return didGetGithubsCallsCount > 0
+    }
+    var didGetGithubsReceivedGithubs: [GetGithubsListRepositoryResponseProtocol]?
+    var didGetGithubsReceivedInvocations: [[GetGithubsListRepositoryResponseProtocol]] = []
+    var didGetGithubsClosure: (([GetGithubsListRepositoryResponseProtocol]) -> Void)?
+
+    func didGet(githubs: [GetGithubsListRepositoryResponseProtocol]) {
+        didGetGithubsCallsCount += 1
+        didGetGithubsReceivedGithubs = githubs
+        didGetGithubsReceivedInvocations.append(githubs)
+        didGetGithubsClosure?(githubs)
+    }
+
+    //MARK: - didHandleError
+
+    var didHandleErrorCallsCount = 0
+    var didHandleErrorCalled: Bool {
+        return didHandleErrorCallsCount > 0
+    }
+    var didHandleErrorClosure: (() -> Void)?
+
+    func didHandleError() {
+        didHandleErrorCallsCount += 1
+        didHandleErrorClosure?()
+    }
+
+}
+class GetGithubsListRepositoryProtocolMock: GetGithubsListRepositoryProtocol {
+    var output: GetGithubsListRepositoryOutput?
+
+    //MARK: - getiOSRepositories
+
+    var getiOSRepositoriesCallsCount = 0
+    var getiOSRepositoriesCalled: Bool {
+        return getiOSRepositoriesCallsCount > 0
+    }
+    var getiOSRepositoriesClosure: (() -> Void)?
+
+    func getiOSRepositories() {
+        getiOSRepositoriesCallsCount += 1
+        getiOSRepositoriesClosure?()
+    }
+
+}
+class GetGithubsListRepositoryResponseProtocolMock: GetGithubsListRepositoryResponseProtocol {
+    var name: String {
+        get { return underlyingName }
+        set(value) { underlyingName = value }
+    }
+    var underlyingName: String!
+    var author: String {
+        get { return underlyingAuthor }
+        set(value) { underlyingAuthor = value }
+    }
+    var underlyingAuthor: String!
+    var license: String {
+        get { return underlyingLicense }
+        set(value) { underlyingLicense = value }
+    }
+    var underlyingLicense: String!
+    var contributorsCount: Int {
+        get { return underlyingContributorsCount }
+        set(value) { underlyingContributorsCount = value }
+    }
+    var underlyingContributorsCount: Int!
+    var starsCount: Int {
+        get { return underlyingStarsCount }
+        set(value) { underlyingStarsCount = value }
+    }
+    var underlyingStarsCount: Int!
+
+    init() {}
+
+    init(name: String, author: String, license: String, contributorsCount: Int, starsCount: Int) {
+      self.name = name
+      self.author = author
+      self.license = license
+      self.contributorsCount = contributorsCount
+      self.starsCount = starsCount
+    }
+}
 class GithubItemProtocolMock: GithubItemProtocol {
     var name: String {
         get { return underlyingName }
@@ -53,6 +140,15 @@ class GithubItemProtocolMock: GithubItemProtocol {
     }
     var underlyingStarsCount: Int!
 
+    init() {}
+
+    init(name: String, author: String, license: String, contributorsCount: Int, starsCount: Int) {
+      self.name = name
+      self.author = author
+      self.license = license
+      self.contributorsCount = contributorsCount
+      self.starsCount = starsCount
+    }
 }
 class GithubViewModelProtocolMock: GithubViewModelProtocol {
     var name: NSAttributedString {
@@ -81,6 +177,15 @@ class GithubViewModelProtocolMock: GithubViewModelProtocol {
     }
     var underlyingStarsCount: NSAttributedString!
 
+    init() {}
+
+    init(name: NSAttributedString, author: NSAttributedString, license: NSAttributedString, contributors: NSAttributedString, starsCount: NSAttributedString) {
+      self.name = name
+      self.author = author
+      self.license = license
+      self.contributors = contributors
+      self.starsCount = starsCount
+    }
 }
 class GithubsListInteractorInputMock: GithubsListInteractorInput {
     var output: GithubsListInteractorOutput?
@@ -340,6 +445,23 @@ class GithubsListPresenterOutputMock: GithubsListPresenterOutput {
     func updateGithubs() {
         updateGithubsCallsCount += 1
         updateGithubsClosure?()
+    }
+
+    //MARK: - showError
+
+    var showErrorWithRetryMessageCallsCount = 0
+    var showErrorWithRetryMessageCalled: Bool {
+        return showErrorWithRetryMessageCallsCount > 0
+    }
+    var showErrorWithRetryMessageReceivedArguments: (message: String, retryMessage: String)?
+    var showErrorWithRetryMessageReceivedInvocations: [(message: String, retryMessage: String)] = []
+    var showErrorWithRetryMessageClosure: ((String, String) -> Void)?
+
+    func showError(with message: String, retryMessage: String) {
+        showErrorWithRetryMessageCallsCount += 1
+        showErrorWithRetryMessageReceivedArguments = (message: message, retryMessage: retryMessage)
+        showErrorWithRetryMessageReceivedInvocations.append((message: message, retryMessage: retryMessage))
+        showErrorWithRetryMessageClosure?(message, retryMessage)
     }
 
 }

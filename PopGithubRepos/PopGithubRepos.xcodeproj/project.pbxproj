@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -433,6 +433,7 @@
 			buildConfigurationList = 78FA522822E23C8C00FE96D3 /* Build configuration list for PBXNativeTarget "PopGithubReposBusinessLogicTests" */;
 			buildPhases = (
 				929FB1DB001BDD0F16B521AE /* [CP] Check Pods Manifest.lock */,
+				781FEF7F22E25E5C001DF06B /* Sourcery */,
 				78FA521122E23C8C00FE96D3 /* Sources */,
 				78FA521222E23C8C00FE96D3 /* Frameworks */,
 				78FA521322E23C8C00FE96D3 /* Resources */,
@@ -461,14 +462,16 @@
 				TargetAttributes = {
 					78FA51E422E23C3F00FE96D3 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					78FA51F822E23C4300FE96D3 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 78FA51E422E23C3F00FE96D3;
 					};
 					78FA520C22E23C8C00FE96D3 = {
 						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 					};
 					78FA521422E23C8C00FE96D3 = {
 						CreatedOnToolsVersion = 10.1;
@@ -575,6 +578,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		781FEF7F22E25E5C001DF06B /* Sourcery */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Sourcery;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$PODS_ROOT/Sourcery/bin/sourcery\n";
 		};
 		78BA7BB822E25104009D3876 /* Sourcery */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -733,8 +754,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78C6B30122E2409300B48943 /* GithubsListInteractorTests.swift in Sources */,
 				78BA7BBD22E251BF009D3876 /* AutoMockable.generated.swift in Sources */,
+				78C6B30122E2409300B48943 /* GithubsListInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -906,7 +927,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tc.PopGithubRepos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -926,7 +947,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tc.PopGithubRepos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -947,7 +968,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tc.PopGithubReposTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PopGithubRepos.app/PopGithubRepos";
 			};
@@ -969,7 +990,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tc.PopGithubReposTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PopGithubRepos.app/PopGithubRepos";
 			};
@@ -999,7 +1020,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1029,7 +1050,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tc.PopGithubReposBusinessLogic;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
