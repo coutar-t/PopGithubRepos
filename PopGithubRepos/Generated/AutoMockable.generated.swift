@@ -310,32 +310,6 @@ class GithubsListPresenterInputMock: GithubsListPresenterInput {
         didTapRowForAtClosure?(row, section)
     }
 
-    //MARK: - didRefreshAndroid
-
-    var didRefreshAndroidCallsCount = 0
-    var didRefreshAndroidCalled: Bool {
-        return didRefreshAndroidCallsCount > 0
-    }
-    var didRefreshAndroidClosure: (() -> Void)?
-
-    func didRefreshAndroid() {
-        didRefreshAndroidCallsCount += 1
-        didRefreshAndroidClosure?()
-    }
-
-    //MARK: - didRefreshiOS
-
-    var didRefreshiOSCallsCount = 0
-    var didRefreshiOSCalled: Bool {
-        return didRefreshiOSCallsCount > 0
-    }
-    var didRefreshiOSClosure: (() -> Void)?
-
-    func didRefreshiOS() {
-        didRefreshiOSCallsCount += 1
-        didRefreshiOSClosure?()
-    }
-
     //MARK: - didTypeSearch
 
     var didTypeSearchWithCallsCount = 0
@@ -351,6 +325,19 @@ class GithubsListPresenterInputMock: GithubsListPresenterInput {
         didTypeSearchWithReceivedInput = input
         didTypeSearchWithReceivedInvocations.append(input)
         didTypeSearchWithClosure?(input)
+    }
+
+    //MARK: - toggleSwitch
+
+    var toggleSwitchCallsCount = 0
+    var toggleSwitchCalled: Bool {
+        return toggleSwitchCallsCount > 0
+    }
+    var toggleSwitchClosure: (() -> Void)?
+
+    func toggleSwitch() {
+        toggleSwitchCallsCount += 1
+        toggleSwitchClosure?()
     }
 
 }
@@ -388,6 +375,23 @@ class GithubsListPresenterOutputMock: GithubsListPresenterOutput {
         setSwitchTextTextReceivedText = text
         setSwitchTextTextReceivedInvocations.append(text)
         setSwitchTextTextClosure?(text)
+    }
+
+    //MARK: - setSearchText
+
+    var setSearchTextTextCallsCount = 0
+    var setSearchTextTextCalled: Bool {
+        return setSearchTextTextCallsCount > 0
+    }
+    var setSearchTextTextReceivedText: String?
+    var setSearchTextTextReceivedInvocations: [String] = []
+    var setSearchTextTextClosure: ((String) -> Void)?
+
+    func setSearchText(text: String) {
+        setSearchTextTextCallsCount += 1
+        setSearchTextTextReceivedText = text
+        setSearchTextTextReceivedInvocations.append(text)
+        setSearchTextTextClosure?(text)
     }
 
     //MARK: - setSearchPlaceholder

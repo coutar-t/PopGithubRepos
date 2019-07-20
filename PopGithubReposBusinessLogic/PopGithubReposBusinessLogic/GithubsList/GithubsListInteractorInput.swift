@@ -16,8 +16,7 @@ public protocol GithubsListInteractorInput: class {
     func numberOfGithubs(at categoryIndex: Int) -> Int
     func github(for index: Int, at categoryIndex: Int) -> GithubItemProtocol?
     func didSelectGithub(for index: Int, at categoryIndex: Int)
-    func retrieveAndroid()
-    func retrieveiOS()
+    func toggleAndroidiOS()
     func search(for text: String)
 }
 

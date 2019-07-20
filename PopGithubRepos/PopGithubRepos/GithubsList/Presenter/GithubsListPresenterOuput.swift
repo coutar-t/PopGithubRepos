@@ -12,6 +12,7 @@ import Foundation
 public protocol GithubsListPresenterOutput: class {
     func setTitle(title: String)
     func setSwitchText(text: NSAttributedString)
+    func setSearchText(text: String)
     func setSearchPlaceholder(placeholder: String)
     func showLoading()
     func hideLoading()

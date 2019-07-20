@@ -19,13 +19,30 @@ class GithubsListInteractor {
         self.getGithubsListRepository = getGithubsListRepository
         self.currentGithubRepository = currentGithubRepository
     }
+
+    private func retrieveAndroid() {
+        isIos = false
+        getGithubsListRepository.getAndroidRepositories(with: nil)
+        output?.notifyLoading()
+    }
+
+    private func retrieveiOS() {
+        isIos = true
+        getGithubsListRepository.getiOSRepositories(with: nil)
+        output?.notifyLoading()
+    }
 }
 
 extension GithubsListInteractor: GithubsListInteractorInput {
     
     func retrieve() {
-        retrieveiOS()
+        if isIos {
+            retrieveiOS()
+        } else {
+            retrieveAndroid()
+        }
         output?.setDefaultsValues()
+        output?.setIsIOS(isIos: isIos)
     }
 
     func numberOfCategories() -> Int {
@@ -60,15 +77,24 @@ extension GithubsListInteractor: GithubsListInteractorInput {
         output?.routeToDetails()
     }
 
-    func retrieveAndroid() {
-        isIos = false
-        getGithubsListRepository.getAndroidRepositories(with: nil)
-        output?.notifyLoading()
+    func toggleAndroidiOS() {
+        isIos.toggle()
+        output?.setIsIOS(isIos: isIos)
+        if isIos {
+            retrieveiOS()
+        } else {
+            retrieveAndroid()
+        }
     }
-    func retrieveiOS() {
-        isIos = true
-        getGithubsListRepository.getiOSRepositories(with: nil)
-        output?.notifyLoading()
+
+    func search(for text: String) {
+        if isIos {
+            getGithubsListRepository.getiOSRepositories(with: text)
+            output?.notifyLoading()
+        } else {
+            getGithubsListRepository.getAndroidRepositories(with: text)
+            output?.notifyLoading()
+        }
     }
 }
 
@@ -84,16 +110,6 @@ extension GithubsListInteractor: GetGithubsListRepositoryOutput {
 
     func didHandleError() {
         output?.notifyUnknownError()
-    }
-
-    func search(for text: String) {
-        if isIos {
-            getGithubsListRepository.getiOSRepositories(with: text)
-            output?.notifyLoading()
-        } else {
-            getGithubsListRepository.getAndroidRepositories(with: text)
-            output?.notifyLoading()
-        }
     }
 }
 

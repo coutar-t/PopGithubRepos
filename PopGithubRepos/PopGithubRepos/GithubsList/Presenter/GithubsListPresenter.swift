@@ -22,6 +22,10 @@ class GithubsListPresenter {
 }
 
 extension GithubsListPresenter: GithubsListPresenterInput {
+    func toggleSwitch() {
+        interactor.toggleAndroidiOS()
+    }
+
     func viewDidLoad() {
         interactor.retrieve()
     }
@@ -54,25 +58,26 @@ extension GithubsListPresenter: GithubsListPresenterInput {
     func didTapRow(for row: Int, at section: Int) {
         interactor.didSelectGithub(for: row, at: section)
     }
-
-    func didRefreshAndroid() {
-        interactor.retrieveAndroid()
-        output?.setTitle(title: "Github's top Android")
-        output?.setSwitchText(text: NSAttributedString(string: "fetch Android", attributes: [.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.black]))
-    }
-
-    func didRefreshiOS() {
-        interactor.retrieveiOS()
-        output?.setTitle(title: "Github's top iOS")
-        output?.setSwitchText(text: NSAttributedString(string: "fetch iOS", attributes: [.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.black]))
-    }
 }
 
 extension GithubsListPresenter: GithubsListInteractorOutput {
     func setDefaultsValues() {
         output?.setTitle(title: "Github's top iOS")
+        output?.setSearchText(text: "")
         output?.setSearchPlaceholder(placeholder: "Search")
         output?.setSwitchText(text: NSAttributedString(string: "fetch iOS", attributes: [.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.black]))
+    }
+
+    func setIsIOS(isIos: Bool) {
+        if isIos {
+            output?.setTitle(title: "Github's top iOS")
+            output?.setSearchText(text: "")
+            output?.setSwitchText(text: NSAttributedString(string: "fetch iOS", attributes: [.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.black]))
+        } else {
+            output?.setTitle(title: "Github's top Android")
+            output?.setSearchText(text: "")
+            output?.setSwitchText(text: NSAttributedString(string: "fetch Android", attributes: [.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.black]))
+        }
     }
 
     func notifyLoading() {

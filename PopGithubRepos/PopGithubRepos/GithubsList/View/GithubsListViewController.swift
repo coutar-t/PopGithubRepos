@@ -29,12 +29,7 @@ class GithubsListViewController: UIViewController {
     }
 
     @IBAction func isIOSSwitchToggled(_ sender: Any) {
-        searchTextField.text = ""
-        if isIOSSwitch.isOn {
-            presenter.didRefreshiOS()
-        } else {
-            presenter.didRefreshAndroid()
-        }
+        presenter.toggleSwitch()
     }
 }
 
@@ -73,6 +68,10 @@ extension GithubsListViewController: UITableViewDataSource {
 }
 
 extension GithubsListViewController: GithubsListPresenterOutput {
+    func setSearchText(text: String) {
+        searchTextField.text = ""
+    }
+
     func setTitle(title: String) {
         self.title = title
     }

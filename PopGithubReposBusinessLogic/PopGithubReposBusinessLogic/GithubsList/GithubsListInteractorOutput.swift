@@ -11,6 +11,7 @@ import Foundation
 // sourcery: AutoMockableBusinessLogic
 public protocol GithubsListInteractorOutput: class {
     func setDefaultsValues()
+    func setIsIOS(isIos: Bool)
     func updateGithubsList()
     func notifyLoading()
     func notifyServerError()

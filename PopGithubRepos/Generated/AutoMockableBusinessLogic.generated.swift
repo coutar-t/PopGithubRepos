@@ -563,30 +563,17 @@ class GithubsListInteractorInputMock: GithubsListInteractorInput {
         didSelectGithubForAtClosure?(index, categoryIndex)
     }
 
-    //MARK: - retrieveAndroid
+    //MARK: - toggleAndroidiOS
 
-    var retrieveAndroidCallsCount = 0
-    var retrieveAndroidCalled: Bool {
-        return retrieveAndroidCallsCount > 0
+    var toggleAndroidiOSCallsCount = 0
+    var toggleAndroidiOSCalled: Bool {
+        return toggleAndroidiOSCallsCount > 0
     }
-    var retrieveAndroidClosure: (() -> Void)?
+    var toggleAndroidiOSClosure: (() -> Void)?
 
-    func retrieveAndroid() {
-        retrieveAndroidCallsCount += 1
-        retrieveAndroidClosure?()
-    }
-
-    //MARK: - retrieveiOS
-
-    var retrieveiOSCallsCount = 0
-    var retrieveiOSCalled: Bool {
-        return retrieveiOSCallsCount > 0
-    }
-    var retrieveiOSClosure: (() -> Void)?
-
-    func retrieveiOS() {
-        retrieveiOSCallsCount += 1
-        retrieveiOSClosure?()
+    func toggleAndroidiOS() {
+        toggleAndroidiOSCallsCount += 1
+        toggleAndroidiOSClosure?()
     }
 
     //MARK: - search
@@ -641,6 +628,23 @@ class GithubsListInteractorOutputMock: GithubsListInteractorOutput {
     func setDefaultsValues() {
         setDefaultsValuesCallsCount += 1
         setDefaultsValuesClosure?()
+    }
+
+    //MARK: - setIsIOS
+
+    var setIsIOSIsIosCallsCount = 0
+    var setIsIOSIsIosCalled: Bool {
+        return setIsIOSIsIosCallsCount > 0
+    }
+    var setIsIOSIsIosReceivedIsIos: Bool?
+    var setIsIOSIsIosReceivedInvocations: [Bool] = []
+    var setIsIOSIsIosClosure: ((Bool) -> Void)?
+
+    func setIsIOS(isIos: Bool) {
+        setIsIOSIsIosCallsCount += 1
+        setIsIOSIsIosReceivedIsIos = isIos
+        setIsIOSIsIosReceivedInvocations.append(isIos)
+        setIsIOSIsIosClosure?(isIos)
     }
 
     //MARK: - updateGithubsList
