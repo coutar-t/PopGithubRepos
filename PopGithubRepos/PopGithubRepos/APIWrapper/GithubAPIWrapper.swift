@@ -12,11 +12,12 @@ class GithubAPIWrapper {
     static var shared = GithubAPIWrapper()
     var currentTask: URLSessionDataTask?
 
-    func getiOSRepositories(success: @escaping (GithubRepositoriesList) -> Void,
+    func getiOSRepositories(with input: String?,
+                            success: @escaping (GithubRepositoriesList) -> Void,
                             failure: @escaping (Error) -> Void) {
         DispatchQueue.global(qos: .background).async {
 
-            guard let url = URL(string: "https://api.github.com/search/repositories?q=topic:ios") else { return }
+            guard let url = URL(string: "https://api.github.com/search/repositories?q=\(input != nil ? "\(input?.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics) ?? "")+in:name+" : "")topic:ios") else { return }
 
             self.fetch(currentUrl: url,
                   success: success,
@@ -24,11 +25,12 @@ class GithubAPIWrapper {
         }
     }
 
-    func getAndroidRepositories(success: @escaping (GithubRepositoriesList) -> Void,
+    func getAndroidRepositories(with input: String?,
+                                success: @escaping (GithubRepositoriesList) -> Void,
                                 failure: @escaping (Error) -> Void) {
         DispatchQueue.global(qos: .background).async {
 
-            guard let url = URL(string: "https://api.github.com/search/repositories?q=topic:android") else { return }
+            guard let url = URL(string: "https://api.github.com/search/repositories?q=\(input != nil ? "\(input?.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics) ?? "")+in:name+" : "")topic:android") else { return }
 
             self.fetch(currentUrl: url,
                        success: success,

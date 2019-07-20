@@ -169,6 +169,8 @@ class GithubsListPresenterTests: XCTestCase {
         expect(self.interactorMock.githubForAtCalled).to(beFalse())
         expect(self.interactorMock.retrieveCalled).to(beFalse())
 
+        expect(self.outputMock.setSearchPlaceholderPlaceholderCallsCount).to(equal(1))
+        expect(self.outputMock.setSearchPlaceholderPlaceholderReceivedPlaceholder).to(equal("Search"))
         expect(self.outputMock.setTitleTitleCallsCount).to(equal(1))
         expect(self.outputMock.setTitleTitleReceivedTitle).to(equal("Github's top iOS"))
         expect(self.outputMock.showLoadingCalled).to(beFalse())
@@ -356,5 +358,32 @@ class GithubsListPresenterTests: XCTestCase {
         expect(self.outputMock.showErrorWithRetryMessageCalled).to(beFalse())
 
         expect(self.routerMock.routeToDetailsCalled).to(beFalse())
+    }
+
+    func test_whenDidTypeSearch_theInteractorSearch() {
+        // When
+
+        presenter.didTypeSearch(with: "Toto")
+
+        // then
+
+        expect(self.routerMock.routeToDetailsCalled).to(beFalse())
+        expect(self.outputMock.hideLoadingCalled).to(beFalse())
+        expect(self.outputMock.showLoadingCalled).to(beFalse())
+        expect(self.outputMock.setTitleTitleCalled).to(beFalse())
+        expect(self.outputMock.updateGithubsCalled).to(beFalse())
+        expect(self.outputMock.setSwitchTextTextCalled).to(beFalse())
+        expect(self.outputMock.showErrorWithRetryMessageCalled).to(beFalse())
+        expect(self.outputMock.setSearchPlaceholderPlaceholderCalled).to(beFalse())
+
+        expect(self.interactorMock.retrieveCalled).to(beFalse())
+        expect(self.interactorMock.searchForCallsCount).to(equal(1))
+        expect(self.interactorMock.searchForReceivedText).to(equal("Toto"))
+        expect(self.interactorMock.githubForAtCalled).to(beFalse())
+        expect(self.interactorMock.retrieveiOSCalled).to(beFalse())
+        expect(self.interactorMock.retrieveAndroidCalled).to(beFalse())
+        expect(self.interactorMock.numberOfGithubsAtCalled).to(beFalse())
+        expect(self.interactorMock.numberOfCategoriesCalled).to(beFalse())
+        expect(self.interactorMock.didSelectGithubForAtCalled).to(beFalse())
     }
 }

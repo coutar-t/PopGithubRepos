@@ -28,16 +28,18 @@ class GetGithubsListRepository {
 }
 
 extension GetGithubsListRepository: GetGithubsListRepositoryProtocol {
-    func getiOSRepositories() {
-        GithubAPIWrapper.shared.getiOSRepositories(success: { [weak self] (repositoriesList) in
+    func getiOSRepositories(with input: String?) {
+        GithubAPIWrapper.shared.getiOSRepositories(with: input,
+                                                   success: { [weak self] (repositoriesList) in
             self?.onSuccess(repositoriesList: repositoriesList)
         }) { [weak self] (error) in
             self?.onError(error: error)
         }
     }
 
-    func getAndroidRepositories() {
-        GithubAPIWrapper.shared.getAndroidRepositories(success: { [weak self] (repositoriesList) in
+    func getAndroidRepositories(with input: String?) {
+        GithubAPIWrapper.shared.getAndroidRepositories(with: input,
+                                                       success: { [weak self] (repositoriesList) in
             self?.onSuccess(repositoriesList: repositoriesList)
         }) { [weak self] (error) in
             self?.onError(error: error)

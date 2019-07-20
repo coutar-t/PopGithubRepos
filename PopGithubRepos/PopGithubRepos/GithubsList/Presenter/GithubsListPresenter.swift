@@ -71,6 +71,7 @@ extension GithubsListPresenter: GithubsListPresenterInput {
 extension GithubsListPresenter: GithubsListInteractorOutput {
     func setDefaultsValues() {
         output?.setTitle(title: "Github's top iOS")
+        output?.setSearchPlaceholder(placeholder: "Search")
         output?.setSwitchText(text: NSAttributedString(string: "fetch iOS", attributes: [.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.black]))
     }
 
@@ -100,6 +101,10 @@ extension GithubsListPresenter: GithubsListInteractorOutput {
 
     func routeToDetails() {
         router.routeToDetails()
+    }
+
+    func didTypeSearch(with input: String) {
+        interactor.search(for: input)
     }
 }
 

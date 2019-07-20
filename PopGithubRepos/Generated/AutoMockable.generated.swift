@@ -336,6 +336,23 @@ class GithubsListPresenterInputMock: GithubsListPresenterInput {
         didRefreshiOSClosure?()
     }
 
+    //MARK: - didTypeSearch
+
+    var didTypeSearchWithCallsCount = 0
+    var didTypeSearchWithCalled: Bool {
+        return didTypeSearchWithCallsCount > 0
+    }
+    var didTypeSearchWithReceivedInput: String?
+    var didTypeSearchWithReceivedInvocations: [String] = []
+    var didTypeSearchWithClosure: ((String) -> Void)?
+
+    func didTypeSearch(with input: String) {
+        didTypeSearchWithCallsCount += 1
+        didTypeSearchWithReceivedInput = input
+        didTypeSearchWithReceivedInvocations.append(input)
+        didTypeSearchWithClosure?(input)
+    }
+
 }
 class GithubsListPresenterOutputMock: GithubsListPresenterOutput {
 
@@ -371,6 +388,23 @@ class GithubsListPresenterOutputMock: GithubsListPresenterOutput {
         setSwitchTextTextReceivedText = text
         setSwitchTextTextReceivedInvocations.append(text)
         setSwitchTextTextClosure?(text)
+    }
+
+    //MARK: - setSearchPlaceholder
+
+    var setSearchPlaceholderPlaceholderCallsCount = 0
+    var setSearchPlaceholderPlaceholderCalled: Bool {
+        return setSearchPlaceholderPlaceholderCallsCount > 0
+    }
+    var setSearchPlaceholderPlaceholderReceivedPlaceholder: String?
+    var setSearchPlaceholderPlaceholderReceivedInvocations: [String] = []
+    var setSearchPlaceholderPlaceholderClosure: ((String) -> Void)?
+
+    func setSearchPlaceholder(placeholder: String) {
+        setSearchPlaceholderPlaceholderCallsCount += 1
+        setSearchPlaceholderPlaceholderReceivedPlaceholder = placeholder
+        setSearchPlaceholderPlaceholderReceivedInvocations.append(placeholder)
+        setSearchPlaceholderPlaceholderClosure?(placeholder)
     }
 
     //MARK: - showLoading

@@ -217,28 +217,36 @@ class GetGithubsListRepositoryProtocolMock: GetGithubsListRepositoryProtocol {
 
     //MARK: - getiOSRepositories
 
-    var getiOSRepositoriesCallsCount = 0
-    var getiOSRepositoriesCalled: Bool {
-        return getiOSRepositoriesCallsCount > 0
+    var getiOSRepositoriesWithCallsCount = 0
+    var getiOSRepositoriesWithCalled: Bool {
+        return getiOSRepositoriesWithCallsCount > 0
     }
-    var getiOSRepositoriesClosure: (() -> Void)?
+    var getiOSRepositoriesWithReceivedInput: String?
+    var getiOSRepositoriesWithReceivedInvocations: [String?] = []
+    var getiOSRepositoriesWithClosure: ((String?) -> Void)?
 
-    func getiOSRepositories() {
-        getiOSRepositoriesCallsCount += 1
-        getiOSRepositoriesClosure?()
+    func getiOSRepositories(with input: String?) {
+        getiOSRepositoriesWithCallsCount += 1
+        getiOSRepositoriesWithReceivedInput = input
+        getiOSRepositoriesWithReceivedInvocations.append(input)
+        getiOSRepositoriesWithClosure?(input)
     }
 
     //MARK: - getAndroidRepositories
 
-    var getAndroidRepositoriesCallsCount = 0
-    var getAndroidRepositoriesCalled: Bool {
-        return getAndroidRepositoriesCallsCount > 0
+    var getAndroidRepositoriesWithCallsCount = 0
+    var getAndroidRepositoriesWithCalled: Bool {
+        return getAndroidRepositoriesWithCallsCount > 0
     }
-    var getAndroidRepositoriesClosure: (() -> Void)?
+    var getAndroidRepositoriesWithReceivedInput: String?
+    var getAndroidRepositoriesWithReceivedInvocations: [String?] = []
+    var getAndroidRepositoriesWithClosure: ((String?) -> Void)?
 
-    func getAndroidRepositories() {
-        getAndroidRepositoriesCallsCount += 1
-        getAndroidRepositoriesClosure?()
+    func getAndroidRepositories(with input: String?) {
+        getAndroidRepositoriesWithCallsCount += 1
+        getAndroidRepositoriesWithReceivedInput = input
+        getAndroidRepositoriesWithReceivedInvocations.append(input)
+        getAndroidRepositoriesWithClosure?(input)
     }
 
 }
@@ -579,6 +587,23 @@ class GithubsListInteractorInputMock: GithubsListInteractorInput {
     func retrieveiOS() {
         retrieveiOSCallsCount += 1
         retrieveiOSClosure?()
+    }
+
+    //MARK: - search
+
+    var searchForCallsCount = 0
+    var searchForCalled: Bool {
+        return searchForCallsCount > 0
+    }
+    var searchForReceivedText: String?
+    var searchForReceivedInvocations: [String] = []
+    var searchForClosure: ((String) -> Void)?
+
+    func search(for text: String) {
+        searchForCallsCount += 1
+        searchForReceivedText = text
+        searchForReceivedInvocations.append(text)
+        searchForClosure?(text)
     }
 
 }

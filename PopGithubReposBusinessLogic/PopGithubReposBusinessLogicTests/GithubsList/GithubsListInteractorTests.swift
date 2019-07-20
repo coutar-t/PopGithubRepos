@@ -34,7 +34,7 @@ class GithubsListInteractorTests: XCTestCase {
 
         // Then
 
-        XCTAssertFalse(repositoryMock.getAndroidRepositoriesCalled)
+        XCTAssertFalse(repositoryMock.getAndroidRepositoriesWithCalled)
         XCTAssert(outputMock.notifyLoadingCallsCount == 1)
         XCTAssert(outputMock.setDefaultsValuesCallsCount == 1)
         XCTAssertFalse(outputMock.routeToDetailsCalled)
@@ -42,7 +42,7 @@ class GithubsListInteractorTests: XCTestCase {
         XCTAssertFalse(outputMock.updateGithubsListCalled)
         XCTAssertFalse(outputMock.notifyNetworkErrorCalled)
         XCTAssertFalse(outputMock.notifyUnknownErrorCalled)
-        XCTAssert(repositoryMock.getiOSRepositoriesCallsCount == 1)
+        XCTAssert(repositoryMock.getiOSRepositoriesWithCallsCount == 1)
     }
 
     // MARK: - interactor.numberOfCategories
@@ -174,7 +174,7 @@ class GithubsListInteractorTests: XCTestCase {
         XCTAssertFalse(outputMock.notifyNetworkErrorCalled)
         XCTAssertFalse(outputMock.notifyUnknownErrorCalled)
 
-        XCTAssertFalse(repositoryMock.getiOSRepositoriesCalled)
+        XCTAssertFalse(repositoryMock.getiOSRepositoriesWithCalled)
 
         XCTAssertFalse(currentGithubRepositoryMock.clearCalled)
         XCTAssertFalse(currentGithubRepositoryMock.getCalled)
@@ -193,8 +193,8 @@ class GithubsListInteractorTests: XCTestCase {
 
         // Then
 
-        XCTAssertFalse(repositoryMock.getiOSRepositoriesCalled)
-        XCTAssert(repositoryMock.getAndroidRepositoriesCallsCount == 1)
+        XCTAssertFalse(repositoryMock.getiOSRepositoriesWithCalled)
+        XCTAssert(repositoryMock.getAndroidRepositoriesWithCallsCount == 1)
 
         XCTAssert(outputMock.notifyLoadingCallsCount == 1)
         XCTAssertFalse(outputMock.setDefaultsValuesCalled)
@@ -212,8 +212,8 @@ class GithubsListInteractorTests: XCTestCase {
 
         // Then
 
-        XCTAssertFalse(repositoryMock.getAndroidRepositoriesCalled)
-        XCTAssert(repositoryMock.getiOSRepositoriesCallsCount == 1)
+        XCTAssertFalse(repositoryMock.getAndroidRepositoriesWithCalled)
+        XCTAssert(repositoryMock.getiOSRepositoriesWithCallsCount == 1)
 
         XCTAssert(outputMock.notifyLoadingCallsCount == 1)
         XCTAssertFalse(outputMock.setDefaultsValuesCalled)
@@ -231,8 +231,8 @@ class GithubsListInteractorTests: XCTestCase {
 
         // Then
 
-        XCTAssertFalse(repositoryMock.getAndroidRepositoriesCalled)
-        XCTAssertFalse(repositoryMock.getiOSRepositoriesCalled)
+        XCTAssertFalse(repositoryMock.getAndroidRepositoriesWithCalled)
+        XCTAssertFalse(repositoryMock.getiOSRepositoriesWithCalled)
 
         XCTAssertFalse(outputMock.notifyLoadingCalled)
         XCTAssertFalse(outputMock.setDefaultsValuesCalled)
@@ -241,5 +241,54 @@ class GithubsListInteractorTests: XCTestCase {
         XCTAssertFalse(outputMock.updateGithubsListCalled)
         XCTAssertFalse(outputMock.notifyNetworkErrorCalled)
         XCTAssert(outputMock.notifyUnknownErrorCallsCount == 1)
+    }
+
+    func test_giveniOSSearch_whenSearch_thenRepositoryGetiOSRepository() {
+        // Given
+
+        interactor.retrieveiOS()
+
+        // When
+
+        interactor.search(for: "toto")
+
+        // Then
+
+        XCTAssertFalse(repositoryMock.getAndroidRepositoriesWithCalled)
+        XCTAssert(repositoryMock.getiOSRepositoriesWithCallsCount == 2)
+        XCTAssert(repositoryMock.getiOSRepositoriesWithReceivedInput == "toto")
+
+
+        XCTAssert(outputMock.notifyLoadingCallsCount == 2)
+        XCTAssertFalse(outputMock.setDefaultsValuesCalled)
+        XCTAssertFalse(outputMock.routeToDetailsCalled)
+        XCTAssertFalse(outputMock.notifyServerErrorCalled)
+        XCTAssertFalse(outputMock.updateGithubsListCalled)
+        XCTAssertFalse(outputMock.notifyNetworkErrorCalled)
+        XCTAssertFalse(outputMock.notifyUnknownErrorCalled)
+    }
+
+    func test_givenAndroidSearch_whenSearch_thenRepositoryGetiOSRepository() {
+        // Given
+
+        interactor.retrieveAndroid()
+
+        // When
+
+        interactor.search(for: "toto")
+
+        // Then
+
+        XCTAssertFalse(repositoryMock.getiOSRepositoriesWithCalled)
+        XCTAssert(repositoryMock.getAndroidRepositoriesWithCallsCount == 2)
+        XCTAssert(repositoryMock.getAndroidRepositoriesWithReceivedInput == "toto")
+
+        XCTAssert(outputMock.notifyLoadingCallsCount == 2)
+        XCTAssertFalse(outputMock.setDefaultsValuesCalled)
+        XCTAssertFalse(outputMock.routeToDetailsCalled)
+        XCTAssertFalse(outputMock.notifyServerErrorCalled)
+        XCTAssertFalse(outputMock.updateGithubsListCalled)
+        XCTAssertFalse(outputMock.notifyNetworkErrorCalled)
+        XCTAssertFalse(outputMock.notifyUnknownErrorCalled)
     }
 }

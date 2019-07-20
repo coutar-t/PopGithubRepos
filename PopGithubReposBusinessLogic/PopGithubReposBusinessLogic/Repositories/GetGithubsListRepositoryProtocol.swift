@@ -11,8 +11,8 @@ import Foundation
 // sourcery: AutoMockableBusinessLogic
 public protocol GetGithubsListRepositoryProtocol: class {
     var output: GetGithubsListRepositoryOutput? { get set }
-    func getiOSRepositories()
-    func getAndroidRepositories()
+    func getiOSRepositories(with input: String?)
+    func getAndroidRepositories(with input: String?)
 }
 
 // sourcery: AutoMockableBusinessLogic

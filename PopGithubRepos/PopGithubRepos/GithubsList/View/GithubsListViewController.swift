@@ -15,6 +15,7 @@ class GithubsListViewController: UIViewController {
     @IBOutlet weak var githubsTableView: UITableView!
     @IBOutlet weak var isIOSSwitch: UISwitch!
     @IBOutlet weak var isIOSSwitchLabel: UILabel!
+    @IBOutlet weak var searchTextField: UITextField!
 
     var presenter: GithubsListPresenterInput!
 
@@ -24,14 +25,27 @@ class GithubsListViewController: UIViewController {
         presenter.viewDidLoad()
         githubsTableView.dataSource = self
         githubsTableView.delegate = self
+        searchTextField.delegate = self
     }
 
     @IBAction func isIOSSwitchToggled(_ sender: Any) {
+        searchTextField.text = ""
         if isIOSSwitch.isOn {
             presenter.didRefreshiOS()
         } else {
             presenter.didRefreshAndroid()
         }
+    }
+}
+
+extension GithubsListViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        presenter.didTypeSearch(with: searchTextField.text ?? "")
     }
 }
 
@@ -61,6 +75,10 @@ extension GithubsListViewController: UITableViewDataSource {
 extension GithubsListViewController: GithubsListPresenterOutput {
     func setTitle(title: String) {
         self.title = title
+    }
+
+    func setSearchPlaceholder(placeholder: String) {
+        self.searchTextField.placeholder = placeholder
     }
 
     func setSwitchText(text: NSAttributedString) {

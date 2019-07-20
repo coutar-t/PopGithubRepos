@@ -13,6 +13,7 @@ class GithubsListInteractor {
     private var getGithubsListRepository: GetGithubsListRepositoryProtocol
     private var currentGithubRepository: CurrentGithubRepositoryProtocol
     private var repositories: [GithubItemProtocol] = []
+    private var isIos = true
 
     init(getGithubsListRepository: GetGithubsListRepositoryProtocol, currentGithubRepository: CurrentGithubRepositoryProtocol) {
         self.getGithubsListRepository = getGithubsListRepository
@@ -60,11 +61,13 @@ extension GithubsListInteractor: GithubsListInteractorInput {
     }
 
     func retrieveAndroid() {
-        getGithubsListRepository.getAndroidRepositories()
+        isIos = false
+        getGithubsListRepository.getAndroidRepositories(with: nil)
         output?.notifyLoading()
     }
     func retrieveiOS() {
-        getGithubsListRepository.getiOSRepositories()
+        isIos = true
+        getGithubsListRepository.getiOSRepositories(with: nil)
         output?.notifyLoading()
     }
 }
@@ -81,6 +84,16 @@ extension GithubsListInteractor: GetGithubsListRepositoryOutput {
 
     func didHandleError() {
         output?.notifyUnknownError()
+    }
+
+    func search(for text: String) {
+        if isIos {
+            getGithubsListRepository.getiOSRepositories(with: text)
+            output?.notifyLoading()
+        } else {
+            getGithubsListRepository.getAndroidRepositories(with: text)
+            output?.notifyLoading()
+        }
     }
 }
 

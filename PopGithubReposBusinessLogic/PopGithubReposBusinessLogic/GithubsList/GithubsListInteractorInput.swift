@@ -18,6 +18,7 @@ public protocol GithubsListInteractorInput: class {
     func didSelectGithub(for index: Int, at categoryIndex: Int)
     func retrieveAndroid()
     func retrieveiOS()
+    func search(for text: String)
 }
 
 // sourcery: AutoMockableBusinessLogic

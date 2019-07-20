@@ -18,6 +18,7 @@ public protocol GithubsListPresenterInput: class {
     func didTapRow(for row: Int, at section: Int)
     func didRefreshAndroid()
     func didRefreshiOS()
+    func didTypeSearch(with input: String)
 }
 
 // sourcery: AutoMockable

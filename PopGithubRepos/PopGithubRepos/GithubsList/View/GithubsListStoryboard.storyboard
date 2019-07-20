@@ -27,8 +27,14 @@
                                     <action selector="isIOSSwitchToggled:" destination="45w-SL-RtL" eventType="valueChanged" id="8ch-FB-bW7"/>
                                 </connections>
                             </switch>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="voD-eS-xIO">
+                                <rect key="frame" x="10" y="85" width="394" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SYW-kj-mi0">
-                                <rect key="frame" x="0.0" y="85" width="414" height="777"/>
+                                <rect key="frame" x="0.0" y="125" width="414" height="737"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="githubCell" rowHeight="100" id="FzZ-wF-C2L" customClass="GithubsListTableViewCell" customModule="PopGithubRepos" customModuleProvider="target">
@@ -105,15 +111,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="OgF-Hc-kQb" firstAttribute="bottom" secondItem="SYW-kj-mi0" secondAttribute="bottom" id="2lC-p8-NRT"/>
+                            <constraint firstItem="OgF-Hc-kQb" firstAttribute="trailing" secondItem="voD-eS-xIO" secondAttribute="trailing" constant="10" id="3tV-ne-1KT"/>
                             <constraint firstItem="sq0-3G-DkN" firstAttribute="centerX" secondItem="OgF-Hc-kQb" secondAttribute="centerX" id="5UH-cW-pNn"/>
                             <constraint firstItem="3q0-kC-JWf" firstAttribute="centerY" secondItem="RJ7-iB-WsA" secondAttribute="centerY" id="6pe-hG-vCZ"/>
                             <constraint firstItem="SYW-kj-mi0" firstAttribute="leading" secondItem="OgF-Hc-kQb" secondAttribute="leading" id="8R3-bN-Ohf"/>
                             <constraint firstItem="RJ7-iB-WsA" firstAttribute="top" secondItem="OgF-Hc-kQb" secondAttribute="top" id="FCY-qv-rvd"/>
+                            <constraint firstItem="SYW-kj-mi0" firstAttribute="top" secondItem="voD-eS-xIO" secondAttribute="bottom" constant="10" id="GBq-Wr-maY"/>
                             <constraint firstItem="RJ7-iB-WsA" firstAttribute="leading" secondItem="OgF-Hc-kQb" secondAttribute="leading" id="Kvd-4L-oKu"/>
-                            <constraint firstItem="SYW-kj-mi0" firstAttribute="top" secondItem="RJ7-iB-WsA" secondAttribute="bottom" constant="10" id="NX3-Ss-fN1"/>
+                            <constraint firstItem="voD-eS-xIO" firstAttribute="top" secondItem="RJ7-iB-WsA" secondAttribute="bottom" constant="10" id="QIU-jC-ew1"/>
                             <constraint firstItem="OgF-Hc-kQb" firstAttribute="trailing" secondItem="SYW-kj-mi0" secondAttribute="trailing" id="UBX-8T-Vro"/>
                             <constraint firstItem="3q0-kC-JWf" firstAttribute="leading" secondItem="RJ7-iB-WsA" secondAttribute="trailing" constant="8" id="gxo-Q9-hZf"/>
                             <constraint firstItem="sq0-3G-DkN" firstAttribute="centerY" secondItem="OgF-Hc-kQb" secondAttribute="centerY" id="lN7-Y6-d2M"/>
+                            <constraint firstItem="voD-eS-xIO" firstAttribute="leading" secondItem="OgF-Hc-kQb" secondAttribute="leading" constant="10" id="vUE-O7-dDH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OgF-Hc-kQb"/>
                     </view>
@@ -122,6 +131,7 @@
                         <outlet property="indicator" destination="sq0-3G-DkN" id="mmZ-F9-xee"/>
                         <outlet property="isIOSSwitch" destination="RJ7-iB-WsA" id="7RE-RS-T0q"/>
                         <outlet property="isIOSSwitchLabel" destination="3q0-kC-JWf" id="w8p-aT-FtW"/>
+                        <outlet property="searchTextField" destination="voD-eS-xIO" id="7pV-4v-enn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B7u-gp-f83" userLabel="First Responder" sceneMemberID="firstResponder"/>
