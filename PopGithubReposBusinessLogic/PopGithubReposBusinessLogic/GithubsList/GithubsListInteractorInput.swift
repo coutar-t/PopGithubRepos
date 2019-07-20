@@ -15,6 +15,7 @@ public protocol GithubsListInteractorInput: class {
     func numberOfCategories() -> Int
     func numberOfGithubs(at categoryIndex: Int) -> Int
     func github(for index: Int, at categoryIndex: Int) -> GithubItemProtocol?
+    func didSelectGithub(for index: Int, at categoryIndex: Int)
 }
 
 // sourcery: AutoMockableBusinessLogic

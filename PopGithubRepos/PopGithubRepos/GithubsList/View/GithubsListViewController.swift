@@ -21,6 +21,13 @@ class GithubsListViewController: UIViewController {
 
         presenter.viewDidLoad()
         githubsTableView.dataSource = self
+        githubsTableView.delegate = self
+    }
+}
+
+extension GithubsListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.didTapRow(for: indexPath.row, at: indexPath.section)
     }
 }
 
@@ -67,5 +74,7 @@ extension GithubsListViewController: GithubsListPresenterOutput {
         alertView.addAction(UIAlertAction(title: retryMessage, style: .default, handler: { [weak self] (_) in
             self?.presenter.viewDidLoad()
         }))
+
+        self.present(alertView, animated: true, completion: nil)
     }
 }

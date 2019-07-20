@@ -16,4 +16,5 @@ public protocol GithubsListInteractorOutput: class {
     func notifyServerError()
     func notifyNetworkError()
     func notifyUnknownError()
+    func routeToDetails()
 }

@@ -12,9 +12,12 @@ import PopGithubReposBusinessLogic
 class GithubsListPresenter {
     weak var output: GithubsListPresenterOutput?
     private var interactor: GithubsListInteractorInput
+    private var router: GithubsListRouterProtocol
 
-    init(interactor: GithubsListInteractorInput) {
+    init(interactor: GithubsListInteractorInput,
+         router: GithubsListRouterProtocol) {
         self.interactor = interactor
+        self.router = router
     }
 }
 
@@ -48,6 +51,10 @@ extension GithubsListPresenter: GithubsListPresenterInput {
             starsCount: NSAttributedString(string: "\(item.starsCount) stars",  attributes: [.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.black]))
     }
 
+    func didTapRow(for row: Int, at section: Int) {
+        interactor.didSelectGithub(for: row, at: section)
+    }
+
 }
 
 extension GithubsListPresenter: GithubsListInteractorOutput {
@@ -77,6 +84,10 @@ extension GithubsListPresenter: GithubsListInteractorOutput {
     func notifyUnknownError() {
         output?.hideLoading()
         output?.showError(with: "A unknown error occured", retryMessage: "Retry ?")
+    }
+
+    func routeToDetails() {
+        router.routeToDetails()
     }
 }
 

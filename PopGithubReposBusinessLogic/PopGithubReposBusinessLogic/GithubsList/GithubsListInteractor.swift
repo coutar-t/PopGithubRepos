@@ -11,10 +11,12 @@ import Foundation
 class GithubsListInteractor {
     weak var output: GithubsListInteractorOutput?
     private var getGithubsListRepository: GetGithubsListRepositoryProtocol
+    private var currentGithubRepository: CurrentGithubRepositoryProtocol
     private var repositories: [GithubItemProtocol] = []
 
-    init(getGithubsListRepository: GetGithubsListRepositoryProtocol) {
+    init(getGithubsListRepository: GetGithubsListRepositoryProtocol, currentGithubRepository: CurrentGithubRepositoryProtocol) {
         self.getGithubsListRepository = getGithubsListRepository
+        self.currentGithubRepository = currentGithubRepository
     }
 }
 
@@ -44,6 +46,19 @@ extension GithubsListInteractor: GithubsListInteractorInput {
         guard categoryIndex == 0, index < repositories.count else { return nil }
         return repositories[index]
     }
+
+    func didSelectGithub(for index: Int, at categoryIndex: Int) {
+        guard categoryIndex == 0, index < repositories.count else { return  }
+
+        let repository = repositories[index]
+
+        currentGithubRepository.save(currentGithub: CurrentGithubRepositoryRequest(name: repository.name,
+                                                                                   author: repository.author,
+                                                                                   license: repository.license,
+                                                                                   contributorsCount: repository.contributorsCount,
+                                                                                   starsCount: repository.starsCount))
+        output?.routeToDetails()
+    }
 }
 
 extension GithubsListInteractor: GetGithubsListRepositoryOutput {
@@ -58,6 +73,14 @@ extension GithubsListInteractor: GetGithubsListRepositoryOutput {
 
     func didHandleError() {
     }
+}
+
+private struct CurrentGithubRepositoryRequest: CurrentGithubRepositoryRequestProtocol {
+    var name: String
+    var author: String
+    var license: String
+    var contributorsCount: Int
+    var starsCount: Int
 }
 
 private struct GithubItem: GithubItemProtocol {

@@ -17,6 +17,14 @@
 		78ADF4E122E310AA00BD1E6A /* GithubsListInteractorModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADF4CD22E30D8E00BD1E6A /* GithubsListInteractorModuleFactory.swift */; };
 		78ADF4E222E310B100BD1E6A /* GetGithubsListRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADF4CF22E30D8E00BD1E6A /* GetGithubsListRepositoryProtocol.swift */; };
 		78ADF4E622E3156600BD1E6A /* CurrentGithubRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADF4E522E3156600BD1E6A /* CurrentGithubRepositoryProtocol.swift */; };
+		78ADF4E822E3164F00BD1E6A /* CurrentGithubRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADF4E722E3164F00BD1E6A /* CurrentGithubRepository.swift */; };
+		78ADF4EB22E3177B00BD1E6A /* CurrentGithubRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADF4EA22E3177B00BD1E6A /* CurrentGithubRepositoryTests.swift */; };
+		78ADF4EE22E317F300BD1E6A /* Pods_PopGithubReposTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78ADF4ED22E317F300BD1E6A /* Pods_PopGithubReposTests.framework */; };
+		78ADF4F122E31A1A00BD1E6A /* GihtubDetailInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADF4F022E31A1A00BD1E6A /* GihtubDetailInteractorInput.swift */; };
+		78ADF4F322E31A2300BD1E6A /* GihtubDetailInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADF4F222E31A2300BD1E6A /* GihtubDetailInteractorOutput.swift */; };
+		78ADF4F522E31A2900BD1E6A /* GihtubDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADF4F422E31A2900BD1E6A /* GihtubDetailInteractor.swift */; };
+		78ADF4F722E31A3700BD1E6A /* GihtubDetailInteractorModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADF4F622E31A3700BD1E6A /* GihtubDetailInteractorModuleFactory.swift */; };
+		78ADF4FA22E31BAF00BD1E6A /* GithubDetailInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADF4F922E31BAF00BD1E6A /* GithubDetailInteractorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +51,14 @@
 		78ADF4D122E30D9300BD1E6A /* GithubsListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubsListInteractorTests.swift; sourceTree = "<group>"; };
 		78ADF4D922E30F6300BD1E6A /* AutoMockableBusinessLogic.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMockableBusinessLogic.generated.swift; sourceTree = "<group>"; };
 		78ADF4E522E3156600BD1E6A /* CurrentGithubRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentGithubRepositoryProtocol.swift; sourceTree = "<group>"; };
+		78ADF4E722E3164F00BD1E6A /* CurrentGithubRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentGithubRepository.swift; sourceTree = "<group>"; };
+		78ADF4EA22E3177B00BD1E6A /* CurrentGithubRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentGithubRepositoryTests.swift; sourceTree = "<group>"; };
+		78ADF4ED22E317F300BD1E6A /* Pods_PopGithubReposTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_PopGithubReposTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78ADF4F022E31A1A00BD1E6A /* GihtubDetailInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GihtubDetailInteractorInput.swift; sourceTree = "<group>"; };
+		78ADF4F222E31A2300BD1E6A /* GihtubDetailInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GihtubDetailInteractorOutput.swift; sourceTree = "<group>"; };
+		78ADF4F422E31A2900BD1E6A /* GihtubDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GihtubDetailInteractor.swift; sourceTree = "<group>"; };
+		78ADF4F622E31A3700BD1E6A /* GihtubDetailInteractorModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GihtubDetailInteractorModuleFactory.swift; sourceTree = "<group>"; };
+		78ADF4F922E31BAF00BD1E6A /* GithubDetailInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubDetailInteractorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78ADF4EE22E317F300BD1E6A /* Pods_PopGithubReposTests.framework in Frameworks */,
 				78ADF4BA22E30D7500BD1E6A /* PopGithubReposBusinessLogic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -70,6 +87,7 @@
 				78ADF4B222E30D7500BD1E6A /* PopGithubReposBusinessLogic */,
 				78ADF4BD22E30D7500BD1E6A /* PopGithubReposBusinessLogicTests */,
 				78ADF4B122E30D7500BD1E6A /* Products */,
+				78ADF4EC22E317F300BD1E6A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,6 +103,7 @@
 		78ADF4B222E30D7500BD1E6A /* PopGithubReposBusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
+				78ADF4EF22E319FD00BD1E6A /* GithubDetail */,
 				78ADF4CE22E30D8E00BD1E6A /* GithubsList */,
 				78ADF4D022E30D8E00BD1E6A /* Repositories */,
 				78ADF4B322E30D7500BD1E6A /* PopGithubReposBusinessLogic.h */,
@@ -96,6 +115,8 @@
 		78ADF4BD22E30D7500BD1E6A /* PopGithubReposBusinessLogicTests */ = {
 			isa = PBXGroup;
 			children = (
+				78ADF4F822E31B9400BD1E6A /* GithubDetail */,
+				78ADF4E922E3176500BD1E6A /* Repositories */,
 				78ADF4D622E30DEB00BD1E6A /* Generated */,
 				78ADF4D222E30D9300BD1E6A /* GithubsList */,
 				78ADF4C022E30D7500BD1E6A /* Info.plist */,
@@ -119,6 +140,7 @@
 			children = (
 				78ADF4CF22E30D8E00BD1E6A /* GetGithubsListRepositoryProtocol.swift */,
 				78ADF4E522E3156600BD1E6A /* CurrentGithubRepositoryProtocol.swift */,
+				78ADF4E722E3164F00BD1E6A /* CurrentGithubRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -138,6 +160,41 @@
 			);
 			name = Generated;
 			path = ../../PopGithubRepos/Generated;
+			sourceTree = "<group>";
+		};
+		78ADF4E922E3176500BD1E6A /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				78ADF4EA22E3177B00BD1E6A /* CurrentGithubRepositoryTests.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		78ADF4EC22E317F300BD1E6A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				78ADF4ED22E317F300BD1E6A /* Pods_PopGithubReposTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		78ADF4EF22E319FD00BD1E6A /* GithubDetail */ = {
+			isa = PBXGroup;
+			children = (
+				78ADF4F022E31A1A00BD1E6A /* GihtubDetailInteractorInput.swift */,
+				78ADF4F222E31A2300BD1E6A /* GihtubDetailInteractorOutput.swift */,
+				78ADF4F422E31A2900BD1E6A /* GihtubDetailInteractor.swift */,
+				78ADF4F622E31A3700BD1E6A /* GihtubDetailInteractorModuleFactory.swift */,
+			);
+			path = GithubDetail;
+			sourceTree = "<group>";
+		};
+		78ADF4F822E31B9400BD1E6A /* GithubDetail */ = {
+			isa = PBXGroup;
+			children = (
+				78ADF4F922E31BAF00BD1E6A /* GithubDetailInteractorTests.swift */,
+			);
+			path = GithubDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,11 +306,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				78ADF4DF22E310A500BD1E6A /* GithubsListInteractorOutput.swift in Sources */,
+				78ADF4E822E3164F00BD1E6A /* CurrentGithubRepository.swift in Sources */,
+				78ADF4F722E31A3700BD1E6A /* GihtubDetailInteractorModuleFactory.swift in Sources */,
 				78ADF4E022E310A700BD1E6A /* GithubsListInteractor.swift in Sources */,
 				78ADF4E622E3156600BD1E6A /* CurrentGithubRepositoryProtocol.swift in Sources */,
 				78ADF4E222E310B100BD1E6A /* GetGithubsListRepositoryProtocol.swift in Sources */,
+				78ADF4F522E31A2900BD1E6A /* GihtubDetailInteractor.swift in Sources */,
 				78ADF4E122E310AA00BD1E6A /* GithubsListInteractorModuleFactory.swift in Sources */,
 				78ADF4DE22E310A300BD1E6A /* GithubsListInteractorInput.swift in Sources */,
+				78ADF4F322E31A2300BD1E6A /* GihtubDetailInteractorOutput.swift in Sources */,
+				78ADF4F122E31A1A00BD1E6A /* GihtubDetailInteractorInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +323,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78ADF4FA22E31BAF00BD1E6A /* GithubDetailInteractorTests.swift in Sources */,
+				78ADF4EB22E3177B00BD1E6A /* CurrentGithubRepositoryTests.swift in Sources */,
 				78ADF4DA22E30F6300BD1E6A /* AutoMockableBusinessLogic.generated.swift in Sources */,
 				78ADF4DD22E3109300BD1E6A /* GithubsListInteractorTests.swift in Sources */,
 			);

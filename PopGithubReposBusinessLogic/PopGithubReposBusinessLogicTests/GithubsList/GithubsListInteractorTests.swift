@@ -13,12 +13,15 @@ import XCTest
 class GithubsListInteractorTests: XCTestCase {
     var interactor: GithubsListInteractor!
     private var repositoryMock: GetGithubsListRepositoryProtocolMock!
+    private var currentGithubRepositoryMock: CurrentGithubRepositoryProtocolMock!
     private var outputMock: GithubsListInteractorOutputMock!
 
     override func setUp() {
         repositoryMock = GetGithubsListRepositoryProtocolMock()
         outputMock = GithubsListInteractorOutputMock()
-        interactor = GithubsListInteractor(getGithubsListRepository: repositoryMock)
+        currentGithubRepositoryMock = CurrentGithubRepositoryProtocolMock()
+        interactor = GithubsListInteractor(getGithubsListRepository: repositoryMock,
+                                           currentGithubRepository: currentGithubRepositoryMock)
         interactor.output = outputMock
     }
 
@@ -143,5 +146,36 @@ class GithubsListInteractorTests: XCTestCase {
         XCTAssertFalse(outputMock.setDefaultsValuesCalled)
         XCTAssertFalse(outputMock.notifyNetworkErrorCalled)
         XCTAssertFalse(outputMock.notifyUnknownErrorCalled)
+    }
+
+    func test_whenDidSelectGithubGoodIndex_thenCurrentRepositorySave() {
+        // Given
+        interactor.didGet(githubs: [GetGithubsListRepositoryResponseProtocolMock(name: "Repo1",
+                                                                                 author: "Author",
+                                                                                 license: "License",
+                                                                                 contributorsCount: 2,
+                                                                                 starsCount: 2)])
+
+        // When
+
+        interactor.didSelectGithub(for: 0, at: 0)
+
+        XCTAssert(outputMock.updateGithubsListCallsCount == 1)
+        XCTAssert(outputMock.routeToDetailsCallsCount == 1)
+        XCTAssertFalse(outputMock.notifyServerErrorCalled)
+        XCTAssertFalse(outputMock.setDefaultsValuesCalled)
+        XCTAssertFalse(outputMock.notifyNetworkErrorCalled)
+        XCTAssertFalse(outputMock.notifyUnknownErrorCalled)
+
+        XCTAssertFalse(repositoryMock.getiOSRepositoriesCalled)
+
+        XCTAssertFalse(currentGithubRepositoryMock.clearCalled)
+        XCTAssertFalse(currentGithubRepositoryMock.getCalled)
+        XCTAssert(currentGithubRepositoryMock.saveCurrentGithubCallsCount == 1)
+        XCTAssert(currentGithubRepositoryMock.saveCurrentGithubReceivedCurrentGithub?.name == "Repo1")
+        XCTAssert(currentGithubRepositoryMock.saveCurrentGithubReceivedCurrentGithub?.author == "Author")
+        XCTAssert(currentGithubRepositoryMock.saveCurrentGithubReceivedCurrentGithub?.license == "License")
+        XCTAssert(currentGithubRepositoryMock.saveCurrentGithubReceivedCurrentGithub?.contributorsCount == 2)
+        XCTAssert(currentGithubRepositoryMock.saveCurrentGithubReceivedCurrentGithub?.starsCount == 2)
     }
 }

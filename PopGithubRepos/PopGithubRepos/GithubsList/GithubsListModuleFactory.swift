@@ -15,7 +15,11 @@ class GithubsListModuleFactory {
 
         let interactor = GithubsListInteractorModuleFactory().interactor(getGithubsListRepository: GetGithubsListRepository())
 
-        let presenter = GithubsListPresenter(interactor: interactor)
+        let router = GithubsListRouter()
+        router.viewController = viewController
+
+        let presenter = GithubsListPresenter(interactor: interactor,
+                                             router: router)
 
         interactor.output = presenter
         presenter.output = viewController

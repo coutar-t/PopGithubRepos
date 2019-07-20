@@ -15,11 +15,14 @@ class GithubsListPresenterTests: XCTestCase {
     var presenter: GithubsListPresenter!
     var interactorMock: GithubsListInteractorInputMock!
     var outputMock: GithubsListPresenterOutputMock!
+    var routerMock: GithubsListRouterProtocolMock!
 
     override func setUp() {
         interactorMock = GithubsListInteractorInputMock()
         outputMock = GithubsListPresenterOutputMock()
-        presenter = GithubsListPresenter(interactor: interactorMock)
+        routerMock = GithubsListRouterProtocolMock()
+        presenter = GithubsListPresenter(interactor: interactorMock,
+                                         router: routerMock)
         presenter.output = outputMock
     }
 
@@ -123,6 +126,37 @@ class GithubsListPresenterTests: XCTestCase {
         expect(viewModel.license).to(equal(NSAttributedString(string: "OpenBSD",  attributes: [.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.black])))
     }
 
+    func test_whenViewModelForWrongRow_thenInteractorGithubForRow() {
+        // Given
+
+        interactorMock.githubForAtReturnValue = nil
+
+        // When
+
+        let viewModel = presenter.viewModel(for: 1, at: 0)
+
+        // Then
+
+        expect(self.outputMock.hideLoadingCalled).to(beFalse())
+        expect(self.outputMock.showLoadingCalled).to(beFalse())
+        expect(self.outputMock.setTitleTitleCalled).to(beFalse())
+        expect(self.outputMock.setTitleTitleCalled).to(beFalse())
+
+        expect(self.interactorMock.retrieveCalled).to(beFalse())
+        expect(self.interactorMock.githubForAtCallsCount).to(equal(1))
+        expect(self.interactorMock.numberOfGithubsAtCalled).to(beFalse())
+        expect(self.interactorMock.numberOfCategoriesCalled).to(beFalse())
+        expect(self.interactorMock.githubForAtReceivedArguments?.index).to(equal(1))
+        expect(self.interactorMock.githubForAtReceivedArguments?.categoryIndex).to(equal(0))
+
+        expect(viewModel.name).to(equal(NSAttributedString(string: "")))
+        expect(viewModel.author).to(equal(NSAttributedString(string: "")))
+        expect(viewModel.contributors).to(equal(NSAttributedString(string: "")))
+        expect(viewModel.starsCount).to(equal(NSAttributedString(string: "")))
+
+        expect(viewModel.license).to(equal(NSAttributedString(string: "")))
+    }
+
     func test_whenSetDefaultsValues_thenOutputSetTitle() {
         // When
 
@@ -221,5 +255,50 @@ class GithubsListPresenterTests: XCTestCase {
         expect(self.outputMock.showErrorWithRetryMessageCallsCount).to(equal(1))
         expect(self.outputMock.showErrorWithRetryMessageReceivedArguments?.message).to(equal("A unknown error occured"))
         expect(self.outputMock.showErrorWithRetryMessageReceivedArguments?.retryMessage).to(equal("Retry ?"))
+    }
+
+    func test_whenRouteToDetails_thenRouterRouteToDetails() {
+        // When
+
+        presenter.routeToDetails()
+
+        // Then
+
+        expect(self.interactorMock.numberOfCategoriesCalled).to(beFalse())
+        expect(self.interactorMock.numberOfGithubsAtCalled).to(beFalse())
+        expect(self.interactorMock.githubForAtCalled).to(beFalse())
+        expect(self.interactorMock.retrieveCalled).to(beFalse())
+
+        expect(self.outputMock.setTitleTitleCalled).to(beFalse())
+        expect(self.outputMock.showLoadingCalled).to(beFalse())
+        expect(self.outputMock.hideLoadingCalled).to(beFalse())
+        expect(self.outputMock.updateGithubsCalled).to(beFalse())
+        expect(self.outputMock.showErrorWithRetryMessageCalled).to(beFalse())
+
+        expect(self.routerMock.routeToDetailsCallsCount).to(equal(1))
+    }
+
+    func test_whenDidTapRowAt_thenInteractorDidSelectGithub() {
+        // When
+
+        presenter.didTapRow(for: 2, at: 3)
+
+        // Then
+
+        expect(self.interactorMock.numberOfCategoriesCalled).to(beFalse())
+        expect(self.interactorMock.numberOfGithubsAtCalled).to(beFalse())
+        expect(self.interactorMock.githubForAtCalled).to(beFalse())
+        expect(self.interactorMock.retrieveCalled).to(beFalse())
+        expect(self.interactorMock.didSelectGithubForAtCallsCount).to(equal(1))
+        expect(self.interactorMock.didSelectGithubForAtReceivedArguments?.index).to(equal(2))
+        expect(self.interactorMock.didSelectGithubForAtReceivedArguments?.categoryIndex).to(equal(3))
+
+        expect(self.outputMock.setTitleTitleCalled).to(beFalse())
+        expect(self.outputMock.showLoadingCalled).to(beFalse())
+        expect(self.outputMock.hideLoadingCalled).to(beFalse())
+        expect(self.outputMock.updateGithubsCalled).to(beFalse())
+        expect(self.outputMock.showErrorWithRetryMessageCalled).to(beFalse())
+
+        expect(self.routerMock.routeToDetailsCalled).to(beFalse())
     }
 }
