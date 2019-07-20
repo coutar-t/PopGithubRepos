@@ -301,4 +301,60 @@ class GithubsListPresenterTests: XCTestCase {
 
         expect(self.routerMock.routeToDetailsCalled).to(beFalse())
     }
+
+    func test_whenDidRefreshAndroid_thenUpdateNameAndRetrieveAndroid() {
+        // When
+
+        presenter.didRefreshAndroid()
+
+        // Then
+
+        expect(self.interactorMock.numberOfCategoriesCalled).to(beFalse())
+        expect(self.interactorMock.numberOfGithubsAtCalled).to(beFalse())
+        expect(self.interactorMock.githubForAtCalled).to(beFalse())
+        expect(self.interactorMock.retrieveCalled).to(beFalse())
+        expect(self.interactorMock.didSelectGithubForAtCalled).to(beFalse())
+        expect(self.interactorMock.retrieveAndroidCallsCount).to(equal(1))
+        expect(self.interactorMock.retrieveiOSCalled).to(beFalse())
+
+        expect(self.outputMock.setTitleTitleCallsCount).to(equal(1))
+        expect(self.outputMock.setTitleTitleReceivedTitle).to(equal("Github's top Android"))
+        expect(self.outputMock.setSwitchTextTextCallsCount).to(equal(1))
+        expect(self.outputMock.setSwitchTextTextReceivedText).to(equal(NSAttributedString(string: "fetch Android", attributes: [.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.black])))
+
+        expect(self.outputMock.showLoadingCalled).to(beFalse())
+        expect(self.outputMock.hideLoadingCalled).to(beFalse())
+        expect(self.outputMock.updateGithubsCalled).to(beFalse())
+        expect(self.outputMock.showErrorWithRetryMessageCalled).to(beFalse())
+
+        expect(self.routerMock.routeToDetailsCalled).to(beFalse())
+    }
+
+    func test_whenDidRefreshiOS_thenUpdateNameAndRetrieveiOS() {
+        // When
+
+        presenter.didRefreshiOS()
+
+        // Then
+
+        expect(self.interactorMock.numberOfCategoriesCalled).to(beFalse())
+        expect(self.interactorMock.numberOfGithubsAtCalled).to(beFalse())
+        expect(self.interactorMock.githubForAtCalled).to(beFalse())
+        expect(self.interactorMock.retrieveCalled).to(beFalse())
+        expect(self.interactorMock.didSelectGithubForAtCalled).to(beFalse())
+        expect(self.interactorMock.retrieveiOSCallsCount).to(equal(1))
+        expect(self.interactorMock.retrieveAndroidCalled).to(beFalse())
+
+        expect(self.outputMock.setTitleTitleCallsCount).to(equal(1))
+        expect(self.outputMock.setTitleTitleReceivedTitle).to(equal("Github's top iOS"))
+        expect(self.outputMock.setSwitchTextTextCallsCount).to(equal(1))
+        expect(self.outputMock.setSwitchTextTextReceivedText).to(equal(NSAttributedString(string: "fetch iOS", attributes: [.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.black])))
+
+        expect(self.outputMock.showLoadingCalled).to(beFalse())
+        expect(self.outputMock.hideLoadingCalled).to(beFalse())
+        expect(self.outputMock.updateGithubsCalled).to(beFalse())
+        expect(self.outputMock.showErrorWithRetryMessageCalled).to(beFalse())
+
+        expect(self.routerMock.routeToDetailsCalled).to(beFalse())
+    }
 }

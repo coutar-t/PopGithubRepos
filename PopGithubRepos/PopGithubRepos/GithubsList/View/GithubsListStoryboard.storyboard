@@ -21,8 +21,14 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="sq0-3G-DkN">
                                 <rect key="frame" x="197" y="443" width="20" height="20"/>
                             </activityIndicatorView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RJ7-iB-WsA">
+                                <rect key="frame" x="0.0" y="44" width="51" height="31"/>
+                                <connections>
+                                    <action selector="isIOSSwitchToggled:" destination="45w-SL-RtL" eventType="valueChanged" id="8ch-FB-bW7"/>
+                                </connections>
+                            </switch>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SYW-kj-mi0">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="85" width="414" height="777"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="githubCell" rowHeight="100" id="FzZ-wF-C2L" customClass="GithubsListTableViewCell" customModule="PopGithubRepos" customModuleProvider="target">
@@ -89,14 +95,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3q0-kC-JWf">
+                                <rect key="frame" x="57" y="49" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="OgF-Hc-kQb" firstAttribute="bottom" secondItem="SYW-kj-mi0" secondAttribute="bottom" id="2lC-p8-NRT"/>
                             <constraint firstItem="sq0-3G-DkN" firstAttribute="centerX" secondItem="OgF-Hc-kQb" secondAttribute="centerX" id="5UH-cW-pNn"/>
+                            <constraint firstItem="3q0-kC-JWf" firstAttribute="centerY" secondItem="RJ7-iB-WsA" secondAttribute="centerY" id="6pe-hG-vCZ"/>
                             <constraint firstItem="SYW-kj-mi0" firstAttribute="leading" secondItem="OgF-Hc-kQb" secondAttribute="leading" id="8R3-bN-Ohf"/>
+                            <constraint firstItem="RJ7-iB-WsA" firstAttribute="top" secondItem="OgF-Hc-kQb" secondAttribute="top" id="FCY-qv-rvd"/>
+                            <constraint firstItem="RJ7-iB-WsA" firstAttribute="leading" secondItem="OgF-Hc-kQb" secondAttribute="leading" id="Kvd-4L-oKu"/>
+                            <constraint firstItem="SYW-kj-mi0" firstAttribute="top" secondItem="RJ7-iB-WsA" secondAttribute="bottom" constant="10" id="NX3-Ss-fN1"/>
                             <constraint firstItem="OgF-Hc-kQb" firstAttribute="trailing" secondItem="SYW-kj-mi0" secondAttribute="trailing" id="UBX-8T-Vro"/>
-                            <constraint firstItem="OgF-Hc-kQb" firstAttribute="top" secondItem="SYW-kj-mi0" secondAttribute="top" id="fUb-SM-f9o"/>
+                            <constraint firstItem="3q0-kC-JWf" firstAttribute="leading" secondItem="RJ7-iB-WsA" secondAttribute="trailing" constant="8" id="gxo-Q9-hZf"/>
                             <constraint firstItem="sq0-3G-DkN" firstAttribute="centerY" secondItem="OgF-Hc-kQb" secondAttribute="centerY" id="lN7-Y6-d2M"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OgF-Hc-kQb"/>
@@ -104,6 +120,8 @@
                     <connections>
                         <outlet property="githubsTableView" destination="SYW-kj-mi0" id="6CL-N5-LeZ"/>
                         <outlet property="indicator" destination="sq0-3G-DkN" id="mmZ-F9-xee"/>
+                        <outlet property="isIOSSwitch" destination="RJ7-iB-WsA" id="7RE-RS-T0q"/>
+                        <outlet property="isIOSSwitchLabel" destination="3q0-kC-JWf" id="w8p-aT-FtW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B7u-gp-f83" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -12,28 +12,54 @@ class GithubAPIWrapper {
     static var shared = GithubAPIWrapper()
     var currentTask: URLSessionDataTask?
 
-    func getiOSRepositories(success: @escaping (GithubRepositoriesList) -> Void, error: (Error) -> Void) {
+    func getiOSRepositories(success: @escaping (GithubRepositoriesList) -> Void,
+                            failure: @escaping (Error) -> Void) {
         DispatchQueue.global(qos: .background).async {
 
-        guard let url = URL(string: "https://api.github.com/search/repositories?q=topic:ios") else { return }
-            self.currentTask?.cancel()
-            self.currentTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let url = URL(string: "https://api.github.com/search/repositories?q=topic:ios") else { return }
+
+            self.fetch(currentUrl: url,
+                  success: success,
+                  failure: failure)
+        }
+    }
+
+    func getAndroidRepositories(success: @escaping (GithubRepositoriesList) -> Void,
+                                failure: @escaping (Error) -> Void) {
+        DispatchQueue.global(qos: .background).async {
+
+            guard let url = URL(string: "https://api.github.com/search/repositories?q=topic:android") else { return }
+
+            self.fetch(currentUrl: url,
+                       success: success,
+                       failure: failure)
+        }
+    }
+
+    private func fetch(currentUrl: URL, success: @escaping (GithubRepositoriesList) -> Void, failure: @escaping (Error) -> Void) {
+        self.currentTask?.cancel()
+
+        self.currentTask = URLSession.shared.dataTask(with: currentUrl) { [weak self] (data, response, error) in
             if let error = error {
                 print(error.localizedDescription)
             }
             if let data = data {
-
-                do {
-                        DispatchQueue.main.async {
-                            try?
-                            success(JSONDecoder().decode(GithubRepositoriesList.self, from: data))
-                    }
-                } catch let e {
-                    print(e.localizedDescription)
-                }
+                self?.decodeRepositoryResult(data: data,
+                                             success: success,
+                                             failure: failure)
             }
         }
-            self.currentTask?.resume()
+
+        self.currentTask?.resume()
+    }
+
+    private func decodeRepositoryResult(data: Data, success: @escaping (GithubRepositoriesList) -> Void, failure: @escaping (Error) -> Void) {
+        DispatchQueue.main.async {
+            do {
+                try success(JSONDecoder().decode(GithubRepositoriesList.self, from: data))
+            } catch let e {
+                failure(e)
+            }
         }
     }
 }

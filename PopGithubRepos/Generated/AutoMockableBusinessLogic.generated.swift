@@ -228,6 +228,19 @@ class GetGithubsListRepositoryProtocolMock: GetGithubsListRepositoryProtocol {
         getiOSRepositoriesClosure?()
     }
 
+    //MARK: - getAndroidRepositories
+
+    var getAndroidRepositoriesCallsCount = 0
+    var getAndroidRepositoriesCalled: Bool {
+        return getAndroidRepositoriesCallsCount > 0
+    }
+    var getAndroidRepositoriesClosure: (() -> Void)?
+
+    func getAndroidRepositories() {
+        getAndroidRepositoriesCallsCount += 1
+        getAndroidRepositoriesClosure?()
+    }
+
 }
 class GetGithubsListRepositoryResponseProtocolMock: GetGithubsListRepositoryResponseProtocol {
     var name: String {
@@ -540,6 +553,32 @@ class GithubsListInteractorInputMock: GithubsListInteractorInput {
         didSelectGithubForAtReceivedArguments = (index: index, categoryIndex: categoryIndex)
         didSelectGithubForAtReceivedInvocations.append((index: index, categoryIndex: categoryIndex))
         didSelectGithubForAtClosure?(index, categoryIndex)
+    }
+
+    //MARK: - retrieveAndroid
+
+    var retrieveAndroidCallsCount = 0
+    var retrieveAndroidCalled: Bool {
+        return retrieveAndroidCallsCount > 0
+    }
+    var retrieveAndroidClosure: (() -> Void)?
+
+    func retrieveAndroid() {
+        retrieveAndroidCallsCount += 1
+        retrieveAndroidClosure?()
+    }
+
+    //MARK: - retrieveiOS
+
+    var retrieveiOSCallsCount = 0
+    var retrieveiOSCalled: Bool {
+        return retrieveiOSCallsCount > 0
+    }
+    var retrieveiOSClosure: (() -> Void)?
+
+    func retrieveiOS() {
+        retrieveiOSCallsCount += 1
+        retrieveiOSClosure?()
     }
 
 }

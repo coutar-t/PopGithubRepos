@@ -58,7 +58,6 @@ extension GithubDetailPresenter: GithubDetailInteractorOutput {
     func routeBack() {
         router.routeBack()
     }
-
 }
 
 private struct GithubDetailViewModel: GithubDetailViewModelProtocol {

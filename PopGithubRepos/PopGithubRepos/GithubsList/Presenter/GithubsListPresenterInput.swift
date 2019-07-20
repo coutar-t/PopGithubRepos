@@ -16,6 +16,8 @@ public protocol GithubsListPresenterInput: class {
     func numberOfRows(in section: Int) -> Int
     func viewModel(for row: Int, at section: Int) -> GithubViewModelProtocol
     func didTapRow(for row: Int, at section: Int)
+    func didRefreshAndroid()
+    func didRefreshiOS()
 }
 
 // sourcery: AutoMockable

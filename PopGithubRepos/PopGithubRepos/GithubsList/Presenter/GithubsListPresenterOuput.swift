@@ -11,6 +11,7 @@ import Foundation
 // sourcery: AutoMockable
 public protocol GithubsListPresenterOutput: class {
     func setTitle(title: String)
+    func setSwitchText(text: NSAttributedString)
     func showLoading()
     func hideLoading()
     func updateGithubs()

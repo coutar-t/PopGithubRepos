@@ -34,7 +34,14 @@ class GithubsListInteractorTests: XCTestCase {
 
         // Then
 
-        XCTAssert(repositoryMock.getiOSRepositoriesCalled)
+        XCTAssertFalse(repositoryMock.getAndroidRepositoriesCalled)
+        XCTAssert(outputMock.notifyLoadingCallsCount == 1)
+        XCTAssert(outputMock.setDefaultsValuesCallsCount == 1)
+        XCTAssertFalse(outputMock.routeToDetailsCalled)
+        XCTAssertFalse(outputMock.notifyServerErrorCalled)
+        XCTAssertFalse(outputMock.updateGithubsListCalled)
+        XCTAssertFalse(outputMock.notifyNetworkErrorCalled)
+        XCTAssertFalse(outputMock.notifyUnknownErrorCalled)
         XCTAssert(repositoryMock.getiOSRepositoriesCallsCount == 1)
     }
 
@@ -177,5 +184,62 @@ class GithubsListInteractorTests: XCTestCase {
         XCTAssert(currentGithubRepositoryMock.saveCurrentGithubReceivedCurrentGithub?.license == "License")
         XCTAssert(currentGithubRepositoryMock.saveCurrentGithubReceivedCurrentGithub?.contributorsCount == 2)
         XCTAssert(currentGithubRepositoryMock.saveCurrentGithubReceivedCurrentGithub?.starsCount == 2)
+    }
+
+    func test_whenRetrieveAndroid_thenRepositoryRetrieveAndroid() {
+        // When
+
+        interactor.retrieveAndroid()
+
+        // Then
+
+        XCTAssertFalse(repositoryMock.getiOSRepositoriesCalled)
+        XCTAssert(repositoryMock.getAndroidRepositoriesCallsCount == 1)
+
+        XCTAssert(outputMock.notifyLoadingCallsCount == 1)
+        XCTAssertFalse(outputMock.setDefaultsValuesCalled)
+        XCTAssertFalse(outputMock.routeToDetailsCalled)
+        XCTAssertFalse(outputMock.notifyServerErrorCalled)
+        XCTAssertFalse(outputMock.updateGithubsListCalled)
+        XCTAssertFalse(outputMock.notifyNetworkErrorCalled)
+        XCTAssertFalse(outputMock.notifyUnknownErrorCalled)
+    }
+
+    func test_whenRetrieveiOS_thenRepositoryRetrieveiOS() {
+        // When
+
+        interactor.retrieveiOS()
+
+        // Then
+
+        XCTAssertFalse(repositoryMock.getAndroidRepositoriesCalled)
+        XCTAssert(repositoryMock.getiOSRepositoriesCallsCount == 1)
+
+        XCTAssert(outputMock.notifyLoadingCallsCount == 1)
+        XCTAssertFalse(outputMock.setDefaultsValuesCalled)
+        XCTAssertFalse(outputMock.routeToDetailsCalled)
+        XCTAssertFalse(outputMock.notifyServerErrorCalled)
+        XCTAssertFalse(outputMock.updateGithubsListCalled)
+        XCTAssertFalse(outputMock.notifyNetworkErrorCalled)
+        XCTAssertFalse(outputMock.notifyUnknownErrorCalled)
+    }
+
+    func test_whenDidHandleError_thenNotifyUnknownError() {
+        // When
+
+        interactor.didHandleError()
+
+        // Then
+
+        XCTAssertFalse(repositoryMock.getAndroidRepositoriesCalled)
+        XCTAssertFalse(repositoryMock.getiOSRepositoriesCalled)
+
+        XCTAssertFalse(outputMock.notifyLoadingCalled)
+        XCTAssertFalse(outputMock.setDefaultsValuesCalled)
+        XCTAssertFalse(outputMock.routeToDetailsCalled)
+        XCTAssertFalse(outputMock.notifyServerErrorCalled)
+        XCTAssertFalse(outputMock.updateGithubsListCalled)
+        XCTAssertFalse(outputMock.notifyNetworkErrorCalled)
+        XCTAssert(outputMock.notifyUnknownErrorCallsCount == 1)
     }
 }

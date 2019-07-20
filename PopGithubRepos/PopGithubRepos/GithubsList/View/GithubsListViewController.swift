@@ -13,6 +13,8 @@ class GithubsListViewController: UIViewController {
 
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var githubsTableView: UITableView!
+    @IBOutlet weak var isIOSSwitch: UISwitch!
+    @IBOutlet weak var isIOSSwitchLabel: UILabel!
 
     var presenter: GithubsListPresenterInput!
 
@@ -22,6 +24,14 @@ class GithubsListViewController: UIViewController {
         presenter.viewDidLoad()
         githubsTableView.dataSource = self
         githubsTableView.delegate = self
+    }
+
+    @IBAction func isIOSSwitchToggled(_ sender: Any) {
+        if isIOSSwitch.isOn {
+            presenter.didRefreshiOS()
+        } else {
+            presenter.didRefreshAndroid()
+        }
     }
 }
 
@@ -51,6 +61,10 @@ extension GithubsListViewController: UITableViewDataSource {
 extension GithubsListViewController: GithubsListPresenterOutput {
     func setTitle(title: String) {
         self.title = title
+    }
+
+    func setSwitchText(text: NSAttributedString) {
+        isIOSSwitchLabel.attributedText = text
     }
 
     func showLoading() {

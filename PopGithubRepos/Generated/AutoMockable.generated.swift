@@ -310,6 +310,32 @@ class GithubsListPresenterInputMock: GithubsListPresenterInput {
         didTapRowForAtClosure?(row, section)
     }
 
+    //MARK: - didRefreshAndroid
+
+    var didRefreshAndroidCallsCount = 0
+    var didRefreshAndroidCalled: Bool {
+        return didRefreshAndroidCallsCount > 0
+    }
+    var didRefreshAndroidClosure: (() -> Void)?
+
+    func didRefreshAndroid() {
+        didRefreshAndroidCallsCount += 1
+        didRefreshAndroidClosure?()
+    }
+
+    //MARK: - didRefreshiOS
+
+    var didRefreshiOSCallsCount = 0
+    var didRefreshiOSCalled: Bool {
+        return didRefreshiOSCallsCount > 0
+    }
+    var didRefreshiOSClosure: (() -> Void)?
+
+    func didRefreshiOS() {
+        didRefreshiOSCallsCount += 1
+        didRefreshiOSClosure?()
+    }
+
 }
 class GithubsListPresenterOutputMock: GithubsListPresenterOutput {
 
@@ -328,6 +354,23 @@ class GithubsListPresenterOutputMock: GithubsListPresenterOutput {
         setTitleTitleReceivedTitle = title
         setTitleTitleReceivedInvocations.append(title)
         setTitleTitleClosure?(title)
+    }
+
+    //MARK: - setSwitchText
+
+    var setSwitchTextTextCallsCount = 0
+    var setSwitchTextTextCalled: Bool {
+        return setSwitchTextTextCallsCount > 0
+    }
+    var setSwitchTextTextReceivedText: NSAttributedString?
+    var setSwitchTextTextReceivedInvocations: [NSAttributedString] = []
+    var setSwitchTextTextClosure: ((NSAttributedString) -> Void)?
+
+    func setSwitchText(text: NSAttributedString) {
+        setSwitchTextTextCallsCount += 1
+        setSwitchTextTextReceivedText = text
+        setSwitchTextTextReceivedInvocations.append(text)
+        setSwitchTextTextClosure?(text)
     }
 
     //MARK: - showLoading

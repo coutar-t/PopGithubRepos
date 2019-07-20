@@ -23,8 +23,7 @@ class GithubsListInteractor {
 extension GithubsListInteractor: GithubsListInteractorInput {
     
     func retrieve() {
-        getGithubsListRepository.getiOSRepositories()
-        output?.notifyLoading()
+        retrieveiOS()
         output?.setDefaultsValues()
     }
 
@@ -59,6 +58,15 @@ extension GithubsListInteractor: GithubsListInteractorInput {
                                                                                    starsCount: repository.starsCount))
         output?.routeToDetails()
     }
+
+    func retrieveAndroid() {
+        getGithubsListRepository.getAndroidRepositories()
+        output?.notifyLoading()
+    }
+    func retrieveiOS() {
+        getGithubsListRepository.getiOSRepositories()
+        output?.notifyLoading()
+    }
 }
 
 extension GithubsListInteractor: GetGithubsListRepositoryOutput {
@@ -72,6 +80,7 @@ extension GithubsListInteractor: GetGithubsListRepositoryOutput {
     }
 
     func didHandleError() {
+        output?.notifyUnknownError()
     }
 }
 
