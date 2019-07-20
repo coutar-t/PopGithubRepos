@@ -16,6 +16,7 @@
 		78ADF4E022E310A700BD1E6A /* GithubsListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADF4CC22E30D8E00BD1E6A /* GithubsListInteractor.swift */; };
 		78ADF4E122E310AA00BD1E6A /* GithubsListInteractorModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADF4CD22E30D8E00BD1E6A /* GithubsListInteractorModuleFactory.swift */; };
 		78ADF4E222E310B100BD1E6A /* GetGithubsListRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADF4CF22E30D8E00BD1E6A /* GetGithubsListRepositoryProtocol.swift */; };
+		78ADF4E622E3156600BD1E6A /* CurrentGithubRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADF4E522E3156600BD1E6A /* CurrentGithubRepositoryProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		78ADF4CF22E30D8E00BD1E6A /* GetGithubsListRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGithubsListRepositoryProtocol.swift; sourceTree = "<group>"; };
 		78ADF4D122E30D9300BD1E6A /* GithubsListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubsListInteractorTests.swift; sourceTree = "<group>"; };
 		78ADF4D922E30F6300BD1E6A /* AutoMockableBusinessLogic.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMockableBusinessLogic.generated.swift; sourceTree = "<group>"; };
+		78ADF4E522E3156600BD1E6A /* CurrentGithubRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentGithubRepositoryProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				78ADF4CF22E30D8E00BD1E6A /* GetGithubsListRepositoryProtocol.swift */,
+				78ADF4E522E3156600BD1E6A /* CurrentGithubRepositoryProtocol.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 			files = (
 				78ADF4DF22E310A500BD1E6A /* GithubsListInteractorOutput.swift in Sources */,
 				78ADF4E022E310A700BD1E6A /* GithubsListInteractor.swift in Sources */,
+				78ADF4E622E3156600BD1E6A /* CurrentGithubRepositoryProtocol.swift in Sources */,
 				78ADF4E222E310B100BD1E6A /* GetGithubsListRepositoryProtocol.swift in Sources */,
 				78ADF4E122E310AA00BD1E6A /* GithubsListInteractorModuleFactory.swift in Sources */,
 				78ADF4DE22E310A300BD1E6A /* GithubsListInteractorInput.swift in Sources */,

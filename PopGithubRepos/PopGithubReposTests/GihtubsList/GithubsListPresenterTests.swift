@@ -156,7 +156,7 @@ class GithubsListPresenterTests: XCTestCase {
 
         expect(self.outputMock.setTitleTitleCalled).to(beFalse())
         expect(self.outputMock.showLoadingCalled).to(beFalse())
-        expect(self.outputMock.hideLoadingCalled).to(beFalse())
+        expect(self.outputMock.hideLoadingCallsCount).to(equal(1))
         expect(self.outputMock.updateGithubsCallsCount).to(equal(1))
     }
 
@@ -174,7 +174,7 @@ class GithubsListPresenterTests: XCTestCase {
 
         expect(self.outputMock.setTitleTitleCalled).to(beFalse())
         expect(self.outputMock.showLoadingCalled).to(beFalse())
-        expect(self.outputMock.hideLoadingCalled).to(beFalse())
+        expect(self.outputMock.hideLoadingCallsCount).to(equal(1))
         expect(self.outputMock.updateGithubsCalled).to(beFalse())
         expect(self.outputMock.showErrorWithRetryMessageCallsCount).to(equal(1))
         expect(self.outputMock.showErrorWithRetryMessageReceivedArguments?.message).to(equal("A server error occured"))
@@ -195,7 +195,7 @@ class GithubsListPresenterTests: XCTestCase {
 
         expect(self.outputMock.setTitleTitleCalled).to(beFalse())
         expect(self.outputMock.showLoadingCalled).to(beFalse())
-        expect(self.outputMock.hideLoadingCalled).to(beFalse())
+        expect(self.outputMock.hideLoadingCallsCount).to(equal(1))
         expect(self.outputMock.updateGithubsCalled).to(beFalse())
         expect(self.outputMock.showErrorWithRetryMessageCallsCount).to(equal(1))
         expect(self.outputMock.showErrorWithRetryMessageReceivedArguments?.message).to(equal("A network error occured"))
@@ -216,7 +216,7 @@ class GithubsListPresenterTests: XCTestCase {
 
         expect(self.outputMock.setTitleTitleCalled).to(beFalse())
         expect(self.outputMock.showLoadingCalled).to(beFalse())
-        expect(self.outputMock.hideLoadingCalled).to(beFalse())
+        expect(self.outputMock.hideLoadingCallsCount).to(equal(1))
         expect(self.outputMock.updateGithubsCalled).to(beFalse())
         expect(self.outputMock.showErrorWithRetryMessageCallsCount).to(equal(1))
         expect(self.outputMock.showErrorWithRetryMessageReceivedArguments?.message).to(equal("A unknown error occured"))

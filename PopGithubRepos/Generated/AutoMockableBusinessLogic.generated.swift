@@ -265,6 +265,19 @@ class GithubsListInteractorOutputMock: GithubsListInteractorOutput {
         updateGithubsListClosure?()
     }
 
+    //MARK: - notifyLoading
+
+    var notifyLoadingCallsCount = 0
+    var notifyLoadingCalled: Bool {
+        return notifyLoadingCallsCount > 0
+    }
+    var notifyLoadingClosure: (() -> Void)?
+
+    func notifyLoading() {
+        notifyLoadingCallsCount += 1
+        notifyLoadingClosure?()
+    }
+
     //MARK: - notifyServerError
 
     var notifyServerErrorCallsCount = 0
