@@ -49,11 +49,13 @@ extension GithubsListViewController: GithubsListPresenterOutput {
     func showLoading() {
         indicator.startAnimating()
         indicator.isHidden = false
+        githubsTableView.isHidden = true
     }
 
     func hideLoading() {
         indicator.stopAnimating()
         indicator.isHidden = true
+        githubsTableView.isHidden = false
     }
 
     func updateGithubs() {

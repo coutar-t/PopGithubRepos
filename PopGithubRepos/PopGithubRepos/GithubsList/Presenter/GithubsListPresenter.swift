@@ -55,19 +55,27 @@ extension GithubsListPresenter: GithubsListInteractorOutput {
         output?.setTitle(title: "Github's top iOS")
     }
 
+    func notifyLoading() {
+        output?.showLoading()
+    }
+
     func updateGithubsList() {
+        output?.hideLoading()
         output?.updateGithubs()
     }
 
     func notifyServerError() {
+        output?.hideLoading()
         output?.showError(with: "A server error occured", retryMessage: "Retry ?")
     }
 
     func notifyNetworkError() {
+        output?.hideLoading()
         output?.showError(with: "A network error occured", retryMessage: "Retry ?")
     }
 
     func notifyUnknownError() {
+        output?.hideLoading()
         output?.showError(with: "A unknown error occured", retryMessage: "Retry ?")
     }
 }

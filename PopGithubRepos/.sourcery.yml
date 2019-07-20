@@ -1,5 +1,7 @@
+
+
 sources:
-  - ./PopGithubReposBusinessLogic
+  - ../PopGithubReposBusinessLogic
   - ./PopGithubRepos
 templates:
   - ./SourceryTemplates

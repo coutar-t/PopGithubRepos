@@ -22,6 +22,8 @@ extension GithubsListInteractor: GithubsListInteractorInput {
     
     func retrieve() {
         getGithubsListRepository.getiOSRepositories()
+        output?.notifyLoading()
+        output?.setDefaultsValues()
     }
 
     func numberOfCategories() -> Int {

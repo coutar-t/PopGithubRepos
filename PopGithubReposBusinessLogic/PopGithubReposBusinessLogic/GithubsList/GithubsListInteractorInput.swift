@@ -8,7 +8,7 @@
 
 import Foundation
 
-// sourcery: AutoMockable
+// sourcery: AutoMockableBusinessLogic
 public protocol GithubsListInteractorInput: class {
     var output: GithubsListInteractorOutput? { get set }
     func retrieve()
@@ -17,7 +17,7 @@ public protocol GithubsListInteractorInput: class {
     func github(for index: Int, at categoryIndex: Int) -> GithubItemProtocol?
 }
 
-// sourcery: AutoMockable
+// sourcery: AutoMockableBusinessLogic
 public protocol GithubItemProtocol {
     var name: String { get }
     var author: String { get }

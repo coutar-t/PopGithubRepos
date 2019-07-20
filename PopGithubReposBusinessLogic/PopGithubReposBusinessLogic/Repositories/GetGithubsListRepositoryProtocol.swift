@@ -8,13 +8,13 @@
 
 import Foundation
 
-// sourcery: AutoMockable
+// sourcery: AutoMockableBusinessLogic
 public protocol GetGithubsListRepositoryProtocol: class {
     var output: GetGithubsListRepositoryOutput? { get set }
     func getiOSRepositories()
 }
 
-// sourcery: AutoMockable
+// sourcery: AutoMockableBusinessLogic
 public protocol GetGithubsListRepositoryOutput: class {
     func didGet(githubs: [GetGithubsListRepositoryResponseProtocol])
     func didHandleError()
@@ -26,7 +26,7 @@ public enum GetGithubsListRepositoryError {
     case server
 }
 
-// sourcery: AutoMockable
+// sourcery: AutoMockableBusinessLogic
 public protocol GetGithubsListRepositoryResponseProtocol {
     var name: String { get }
     var author: String { get }

@@ -8,10 +8,11 @@
 
 import Foundation
 
-// sourcery: AutoMockable
+// sourcery: AutoMockableBusinessLogic
 public protocol GithubsListInteractorOutput: class {
     func setDefaultsValues()
     func updateGithubsList()
+    func notifyLoading()
     func notifyServerError()
     func notifyNetworkError()
     func notifyUnknownError()

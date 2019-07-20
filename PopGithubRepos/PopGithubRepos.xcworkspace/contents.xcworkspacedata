@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../PopGithubReposBusinessLogic/PopGithubReposBusinessLogic.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:PopGithubRepos.xcodeproj">
    </FileRef>
    <FileRef

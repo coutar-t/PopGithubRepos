@@ -9,15 +9,15 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "78FA521422E23C8C00FE96D3"
+               BlueprintIdentifier = "78ADF4B822E30D7500BD1E6A"
                BuildableName = "PopGithubReposBusinessLogicTests.xctest"
                BlueprintName = "PopGithubReposBusinessLogicTests"
-               ReferencedContainer = "container:PopGithubRepos.xcodeproj">
+               ReferencedContainer = "container:PopGithubReposBusinessLogic.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,17 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "78FA521422E23C8C00FE96D3"
-               BuildableName = "PopGithubReposBusinessLogicTests.xctest"
-               BlueprintName = "PopGithubReposBusinessLogicTests"
-               ReferencedContainer = "container:PopGithubRepos.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "78FA51E422E23C3F00FE96D3"
+            BuildableName = "PopGithubRepos.app"
+            BlueprintName = "PopGithubRepos"
+            ReferencedContainer = "container:../PopGithubRepos/PopGithubRepos.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -52,15 +51,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "78FA521422E23C8C00FE96D3"
-            BuildableName = "PopGithubReposBusinessLogicTests.xctest"
-            BlueprintName = "PopGithubReposBusinessLogicTests"
-            ReferencedContainer = "container:PopGithubRepos.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -73,10 +63,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "78FA521422E23C8C00FE96D3"
+            BlueprintIdentifier = "78ADF4B822E30D7500BD1E6A"
             BuildableName = "PopGithubReposBusinessLogicTests.xctest"
             BlueprintName = "PopGithubReposBusinessLogicTests"
-            ReferencedContainer = "container:PopGithubRepos.xcodeproj">
+            ReferencedContainer = "container:PopGithubReposBusinessLogic.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

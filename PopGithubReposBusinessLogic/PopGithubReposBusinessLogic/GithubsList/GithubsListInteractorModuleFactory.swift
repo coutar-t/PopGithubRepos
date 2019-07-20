@@ -8,7 +8,7 @@
 
 import Foundation
 
-// sourcery: AutoMockable
+// sourcery: AutoMockableBusinessLogic
 public protocol GithubsListInteractorModuleFactoryProtocol {
     func interactor(getGithubsListRepository: GetGithubsListRepositoryProtocol) -> GithubsListInteractorInput
 }
